@@ -1,0 +1,80 @@
+.hero-section {
+    width: 100%;
+    padding: 2rem;
+}
+
+.hero-container {
+    /* background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../assets/hero.jpg"); */
+    width: 100%;
+    height: 60vh;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.featured {
+    text-align: center;
+}
+
+.featured-container {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    color: var(--secondary-dark-blue-hover);
+}
+
+.category {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 18rem;
+    height: 10em;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: var(--pd-l);
+    background-color: var(--offline-gray);
+    font-size: 2rem;
+    color: var(--dark-theme-bg-color);
+}
+
+.cat-one {
+    /* background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../assets/cap.jpg"); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.cat-two {
+    /* background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../assets/glasses.jpg"); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.cat-three {
+    /* background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../assets/shoes.jpg"); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.cat-four {
+    /* background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("../assets/partywear.jpg"); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
