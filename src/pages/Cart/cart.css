@@ -1,0 +1,37 @@
+.prod-select-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap-reverse;
+    padding: 1rem;
+}
+
+.price-details-container {
+    margin-top: 3rem;
+}
+
+.price-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.price-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.price-detail-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-quantity {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+}
