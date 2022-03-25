@@ -13,21 +13,21 @@ export const Navbar = () => {
             </div>
             <div className="open-menu"><i className="fas fa-bars"></i></div>
             <ul className="main-menu text-s fw-600">
-                <li><Link to="./products">Men</Link></li>
-                <li><Link to="./products">Women</Link></li>
-                <li><Link to="./products">Accessories</Link></li>
+                <li><Link to="/products">Men</Link></li>
+                <li><Link to="/products">Women</Link></li>
+                <li><Link to="/products">Accessories</Link></li>
                 <li>
-                    <Link to="./login">
+                    <Link to="/login">
                         <button className="btn btn-primary login-btn">Login</button>
                     </Link>
                 </li>
                 <li>
-                    <Link to="./wishlist">
+                    <Link to="/wishlist">
                         <i className="fas fa-heart"></i>
                     </Link>
                 </li>
                 <li>
-                    <Link to="./cart">
+                    <Link to="/cart">
                         <i className="fas fa-cart-plus"></i>
                     </Link>
                 </li>
