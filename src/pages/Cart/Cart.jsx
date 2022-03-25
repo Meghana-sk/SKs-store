@@ -1,5 +1,5 @@
-import Card from "../../components/Card/Card";
 import "./cart.css";
+import { Card } from "../../components";
 
 const Cart = () => {
     return (
@@ -47,4 +47,4 @@ const Cart = () => {
     );
 }
 
-export default Cart;
+export { Cart };

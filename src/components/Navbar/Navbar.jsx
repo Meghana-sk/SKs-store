@@ -1,30 +1,35 @@
 import "./navbar.css"
+import { Link } from "react-router-dom";
 
-const Navbar = () => {
+export const Navbar = () => {
     return (
         <nav className="nav">
-            <a href="./index.html">
+            <Link to="/">
                 <h1 className="brand-name">SK's</h1>
-            </a>
+            </Link>
             <div className="search-box">
                 <input type="search" name="search" placeholder="search ..." />
                 <i className="fas fa-search search-btn"></i>
             </div>
             <div className="open-menu"><i className="fas fa-bars"></i></div>
             <ul className="main-menu text-s fw-600">
-                <li><a href="./pages/products/products.html">Men</a></li>
-                <li><a href="./pages/products/products.html">Women</a></li>
-                <li><a href="./pages/products/products.html">Accessories</a></li>
+                <li><Link to="/products">Men</Link></li>
+                <li><Link to="/products">Women</Link></li>
+                <li><Link to="/products">Accessories</Link></li>
                 <li>
-                    <a href="./pages/authentication/login.html">
+                    <Link to="/login">
                         <button className="btn btn-primary login-btn">Login</button>
-                    </a>
+                    </Link>
                 </li>
                 <li>
-                    <a href="./pages/cart-mgmt/wishlist.html"><i className="fas fa-heart"></i></a>
+                    <Link to="/wishlist">
+                        <i className="fas fa-heart"></i>
+                    </Link>
                 </li>
                 <li>
-                    <a href="./pages/cart-mgmt/cart.html"><i className="fas fa-cart-plus"></i></a>
+                    <Link to="/cart">
+                        <i className="fas fa-cart-plus"></i>
+                    </Link>
                 </li>
                 <div className="close-menu"><i className="fa fa-times"></i></div>
                 <span className="socials">
@@ -42,5 +47,3 @@ const Navbar = () => {
         </nav>
     );
 }
-
-export default Navbar;

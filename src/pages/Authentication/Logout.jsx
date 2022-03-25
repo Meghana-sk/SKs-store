@@ -1,4 +1,5 @@
 import "./auth.css";
+import { Link } from "react-router-dom";
 
 const Logout = () => {
     return (
@@ -7,13 +8,13 @@ const Logout = () => {
                 <div className="auth-content">
                     <div className="text-center"><i className="fa fa-check-circle fa-2x"></i></div>
                     <p>You have been logged out. Click below to login</p>
-                    <a href="../authentication/login.html">
+                    <Link to="/login">
                         <button className="btn btn-primary text-s">Login</button>
-                    </a>
+                    </Link>
                 </div>
             </section>
         </>
     );
 }
 
-export default Logout;
+export { Logout };

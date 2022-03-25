@@ -1,6 +1,6 @@
 import "./filter.css";
 
-const FilterSideNav = () => {
+export const FilterSideNav = () => {
     return (
         <>
             <aside className="prod-filters">
@@ -65,5 +65,3 @@ const FilterSideNav = () => {
         </>
     );
 }
-
-export default FilterSideNav;

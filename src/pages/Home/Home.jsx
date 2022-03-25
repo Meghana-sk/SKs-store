@@ -1,4 +1,5 @@
-import "./home.css"
+import "./home.css";
+import { Link } from "react-router-dom";
 
 const Home = () => {
     return (
@@ -9,9 +10,9 @@ const Home = () => {
                         <div className="hero-content">
                             <h1 className="highlight-text text-xl fw-900">CLEARANCE SALE</h1>
                             <h3 className="fw-600">20th FEB - 2nd MAR</h3>
-                            <a href="./pages/products/products.html" className="fw-600">
+                            <Link to="/products">
                                 <button className="btn btn-primary text-s">SHOP NOW</button>
-                                </a>
+                            </Link>
                             <h1 className="fw-600 text-l">40-70% OFF</h1>
                         </div>
                     </div>
@@ -20,18 +21,18 @@ const Home = () => {
                 <section className="featured">
                     <h2>Featured categories</h2>
                     <div className="featured-container fw-900">
-                        <a href="./pages/products/products.html">
+                        <Link to="/products">
                             <div className="category cat-one">Caps</div>
-                        </a>
-                        <a href="./pages/products/products.html">
+                        </Link>
+                        <Link to="/products">
                             <div className="category cat-two">Glasses</div>
-                        </a>
-                        <a href="./pages/products/products.html">
+                        </Link>
+                        <Link to="/products">
                             <div className="category cat-three">Shoes</div>
-                        </a>
-                        <a href="./pages/products/products.html">
+                        </Link>
+                        <Link to="/products">
                             <div className="category cat-four">Party wear</div>
-                        </a>
+                        </Link>
                     </div>
                 </section>
             </main>
@@ -39,4 +40,4 @@ const Home = () => {
     );
 }
 
-export default Home;
+export { Home };

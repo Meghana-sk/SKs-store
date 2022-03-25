@@ -1,4 +1,5 @@
 import "./auth.css";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
     return (
@@ -7,7 +8,7 @@ const Signup = () => {
                 <div className="auth-content">
                     <header className="auth-header">
                         <h1>Sign up</h1>
-                        <a href="../../index.html"><i className="fas fa-times"></i></a>
+                        <Link to="/"><i className="fas fa-times"></i></Link>
                     </header>
                     <form action="">
                         <div className="input-box">
@@ -32,14 +33,14 @@ const Signup = () => {
                         </div>
                         <button className="btn btn-primary text-s">Create account</button>
                     </form>
-                    <a href="./login.html" className="login-hint">
+                    <Link to="/login" className="login-hint">
                         <span>Already have an account ?</span>
                         <button className="btn btn-secondary-text text-s fw-600">Login</button>
-                    </a>
+                    </Link>
                 </div>
             </section>
         </>
     );
 }
 
-export default Signup;
+export { Signup };

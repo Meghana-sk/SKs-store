@@ -1,6 +1,6 @@
 import "./card.css";
 
-const Card = () => {
+export const Card = () => {
     return (
         <>
             <div className="card">
@@ -26,5 +26,3 @@ const Card = () => {
         </>
     );
 }
-
-export default Card;
