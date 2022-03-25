@@ -1,5 +1,5 @@
-import Card from "../../components/Card/Card";
 import "./wishlist.css";
+import { Card } from "../../components";
 
 const Wishlist = () => {
     return (
@@ -17,4 +17,4 @@ const Wishlist = () => {
     );
 }
 
-export default Wishlist;
+export { Wishlist };

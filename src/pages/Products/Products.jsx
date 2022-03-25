@@ -1,6 +1,5 @@
-import Card from "../../components/Card/Card";
-import FilterSideNav from "../../components/FilterSideNav/FilterSideNav";
 import "./products.css"
+import { Card, FilterSideNav } from "../../components";
 
 const Products = () => {
     return (
@@ -25,4 +24,4 @@ const Products = () => {
     );
 }
 
-export default Products;
+export { Products };

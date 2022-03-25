@@ -1,6 +1,5 @@
-import Footer from "../../components/Footer/Footer"
-import Navbar from "../../components/Navbar/Navbar"
 import "./auth.css"
+import { Link } from "react-router-dom";
 
 const Login = () => {
     return(
@@ -9,7 +8,9 @@ const Login = () => {
                 <div className="auth-content">
                     <header className="auth-header">
                         <h1>Login</h1>
-                        <a href="../../index.html"><i className="fas fa-times"></i></a>
+                        <Link to="/">
+                            <i className="fas fa-times"></i>
+                        </Link>
                     </header>
                     <form action="" className="form-section">
                         <div className="input-box">
@@ -23,13 +24,13 @@ const Login = () => {
                         <button className="btn btn-primary text-s">Login</button>
                     </form>
                     <span className="login-hint">Don't have an account ?</span>
-                    <a href="./signup.html">
+                    <Link to="/signup">
                         <button className="btn btn-secondary-text text-s fw-600">Signup</button>
-                    </a>
+                    </Link>
                 </div>
             </section>
         </>
     );
 }
 
-export default Login;
+export { Login };
