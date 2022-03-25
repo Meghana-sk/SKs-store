@@ -1,7 +1,22 @@
 import "./home.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 const Home = () => {
+    const [ productCategories, setProductCategories] = useState([]);
+    const getProductCategories = async() => {
+        try {
+            const productsData = await axios.get("/api/categories");
+            setProductCategories(productsData.data.categories);
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    useEffect(() => {
+        getProductCategories()
+    }, [])
     return (
         <div>
             <main>
@@ -21,18 +36,12 @@ const Home = () => {
                 <section className="featured">
                     <h2>Featured categories</h2>
                     <div className="featured-container fw-900">
-                        <Link to="/products">
-                            <div className="category cat-one">Caps</div>
-                        </Link>
-                        <Link to="/products">
-                            <div className="category cat-two">Glasses</div>
-                        </Link>
-                        <Link to="/products">
-                            <div className="category cat-three">Shoes</div>
-                        </Link>
-                        <Link to="/products">
-                            <div className="category cat-four">Party wear</div>
-                        </Link>
+                        { productCategories.map(({ categoryName }) => 
+                            (
+                                <Link to="/products">
+                                    <div className="category cat-one">{ categoryName }</div>
+                                </Link>
+                            )) }
                     </div>
                 </section>
             </main>
