@@ -1,31 +1,27 @@
 import "./products.css"
 import { Card, FilterSideNav } from "../../components";
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { useProducts } from "../../context/product-context";
+import { getProductsWithSortLowToHigh, getProductsWithSelectedRatings, getProductsWithSelectedCategory, getProductsWithPriceRange } from "../../utils";
+import { useProductFilter } from "../../context/prodfilter-context";
 
 const Products = () => {
-    const [ availableProducts, setAvailableProducts] = useState([]);
-    const getAvailableProducts = async() => {
-        try {
-            const productsData = await axios.get("/api/products");
-            setAvailableProducts(productsData.data.products);
-        } catch (error) {
-            console.error(error)
-        }
-    }
+    const { availableProducts } = useProducts();
+    const {filterState} = useProductFilter();
 
-    useEffect(() => {
-        getAvailableProducts()
-    }, [])
+    let filteredProducts = getProductsWithSortLowToHigh( availableProducts,filterState);
+    filteredProducts = getProductsWithSelectedRatings(filteredProducts,filterState);
+    filteredProducts = getProductsWithSelectedCategory(filteredProducts, filterState);
+    // filteredProducts = getProductsWithPriceRange(filteredProducts, filterState);
+
     return (
         <>
             <main className="prod-content">
                 <FilterSideNav />
                 <section className="prod-section">
-                    <h3>Showing Products { `${availableProducts.length} / ${availableProducts.length}` }</h3>
+                    <h3>Showing Products { `${filteredProducts.length}` }</h3>
                     <div className="card-container">
-                        {availableProducts.map(item => (
-                            <Card { ...item }/>
+                        {filteredProducts.map(({price, author, rating, _id, categoryName}) => (
+                            <Card key={_id} price={price} title={author} rating={rating} categoryName={categoryName}/>
                         ))}
                     </div>
                 </section>
