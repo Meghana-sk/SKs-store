@@ -1,48 +1,48 @@
 .auth-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
 }
 
 .auth-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .auth-content {
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--offline-gray);
-    padding: 1.5rem;
-    border-radius: 10px;
-    gap: 0.5rem;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--offline-gray);
+  padding: 1.5rem;
+  border-radius: 10px;
+  gap: 0.5rem;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .auth-container .auth-content a .btn,
 .auth-container .auth-content form .btn,
 form .input-box {
-    width: 100%;
+  width: 100%;
 }
 
 .auth-header i {
-    cursor: pointer;
-    color: var(--secondary-dark-blue-hover)
+  cursor: pointer;
+  color: var(--secondary-dark-blue-hover);
 }
 
 i:hover {
-    color: var(--primary-blue)
+  color: var(--primary-blue);
 }
 
 .login-hint {
-    color: var(--secondary-color-hover);
+  color: var(--secondary-color-hover);
 }

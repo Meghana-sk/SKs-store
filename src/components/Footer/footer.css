@@ -1,19 +1,19 @@
 .footer {
-    background-color: var(--dark-theme-bg-color);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    color: var(--white-color);
+  background-color: var(--dark-theme-bg-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  color: var(--white-color);
 }
 
 .footer h3 ul li a,
 .footer h3 {
-    color: var(--white-color);
+  color: var(--white-color);
 }
 
 .footer li a {
-    list-style: none;
-    color: var(--white-color);
+  list-style: none;
+  color: var(--white-color);
 }
