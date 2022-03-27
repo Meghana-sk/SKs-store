@@ -1,5 +1,15 @@
 import "./filter.css";
-import { useProductFilter } from "../../context/prodfilter-context";
+import { useProductFilter } from "../../context/productFilter-context";
+import {
+  HIGH_TO_LOW,
+  LOW_TO_HIGH,
+  RATING,
+  CATEGORIES,
+  BRANDS,
+  GENDER_SELECT,
+  PRICE_RANGE_FILTER,
+  CLEAR_FILTERS,
+} from "../../shared/types";
 
 export const FilterSideNav = () => {
   const { filterState, filterDispatch } = useProductFilter();
@@ -11,7 +21,7 @@ export const FilterSideNav = () => {
           <h4 className="section-heading">FILTERS</h4>
           <button
             className="btn btn-secondary-text text-s"
-            onClick={() => filterDispatch({ type: "CLEAR_FILTERS" })}
+            onClick={() => filterDispatch({ type: CLEAR_FILTERS })}
           >
             Clear
           </button>
@@ -28,7 +38,7 @@ export const FilterSideNav = () => {
             className="slider"
             onChange={(event) =>
               filterDispatch({
-                type: "PRICE_RANGE_FILTER",
+                type: PRICE_RANGE_FILTER,
                 payload: { priceRange: event.target.value },
               })
             }
@@ -47,7 +57,7 @@ export const FilterSideNav = () => {
               name="price"
               id="sort-low-to-high"
               checked={sortBy === "LOW_TO_HIGH"}
-              onChange={() => filterDispatch({ type: "LOW_TO_HIGH" })}
+              onChange={() => filterDispatch({ type: LOW_TO_HIGH })}
             />
             <label htmlFor="sort-low-to-high"> Low to High</label>
           </li>
@@ -57,7 +67,7 @@ export const FilterSideNav = () => {
               name="price"
               id="sort-high-to-low"
               checked={sortBy === "HIGH_TO_LOW"}
-              onChange={() => filterDispatch({ type: "HIGH_TO_LOW" })}
+              onChange={() => filterDispatch({ type: HIGH_TO_LOW })}
             />
             <label htmlFor="sort-high-to-low"> High to low</label>
           </li>
@@ -71,7 +81,9 @@ export const FilterSideNav = () => {
               name="rating"
               id="rating-4"
               checked={rating === "4"}
-              onChange={() => filterDispatch({ type: "4" })}
+              onChange={() =>
+                filterDispatch({ type: RATING, payload: { rating: "4" } })
+              }
             />
             <label htmlFor="rating-4"> 4 & above</label>
           </li>
@@ -81,7 +93,9 @@ export const FilterSideNav = () => {
               name="rating"
               id="rating-3"
               checked={rating === "3"}
-              onChange={() => filterDispatch({ type: "3" })}
+              onChange={() =>
+                filterDispatch({ type: RATING, payload: { rating: "3" } })
+              }
             />
             <label htmlFor="rating-3"> 3 & above</label>
           </li>
@@ -91,7 +105,9 @@ export const FilterSideNav = () => {
               name="rating"
               id="rating-2"
               checked={rating === "2"}
-              onChange={() => filterDispatch({ type: "2" })}
+              onChange={() =>
+                filterDispatch({ type: RATING, payload: { rating: "2" } })
+              }
             />
             <label htmlFor="rating-2"> 2 & above</label>
           </li>
@@ -101,7 +117,9 @@ export const FilterSideNav = () => {
               name="rating"
               id="rating-1"
               checked={rating === "1"}
-              onChange={() => filterDispatch({ type: "1" })}
+              onChange={() =>
+                filterDispatch({ type: RATING, payload: { rating: "1" } })
+              }
             />
             <label htmlFor="rating-1"> 1 & above</label>
           </li>
@@ -116,7 +134,7 @@ export const FilterSideNav = () => {
               id="category-1"
               onChange={(e) =>
                 filterDispatch({
-                  type: "CATEGORIES",
+                  type: CATEGORIES,
                   payload: {
                     categoryName: "caps",
                     isSelected: e.target.checked,
@@ -133,7 +151,7 @@ export const FilterSideNav = () => {
               id="category-2"
               onChange={(e) =>
                 filterDispatch({
-                  type: "CATEGORIES",
+                  type: CATEGORIES,
                   payload: {
                     categoryName: "glasses",
                     isSelected: e.target.checked,
@@ -150,7 +168,7 @@ export const FilterSideNav = () => {
               id="category-3"
               onChange={(e) =>
                 filterDispatch({
-                  type: "CATEGORIES",
+                  type: CATEGORIES,
                   payload: {
                     categoryName: "shoes",
                     isSelected: e.target.checked,
@@ -171,7 +189,7 @@ export const FilterSideNav = () => {
               id="brand-1"
               onChange={(e) =>
                 filterDispatch({
-                  type: "BRANDS",
+                  type: BRANDS,
                   payload: { brand: "Adidas", isSelected: e.target.checked },
                 })
               }
@@ -185,7 +203,7 @@ export const FilterSideNav = () => {
               id="brand-2"
               onChange={(e) =>
                 filterDispatch({
-                  type: "BRANDS",
+                  type: BRANDS,
                   payload: { brand: "H&M", isSelected: e.target.checked },
                 })
               }
@@ -199,7 +217,7 @@ export const FilterSideNav = () => {
               id="brand-3"
               onChange={(e) =>
                 filterDispatch({
-                  type: "BRANDS",
+                  type: BRANDS,
                   payload: { brand: "Ray Ban", isSelected: e.target.checked },
                 })
               }
@@ -213,7 +231,7 @@ export const FilterSideNav = () => {
               id="brand-4"
               onChange={(e) =>
                 filterDispatch({
-                  type: "BRANDS",
+                  type: BRANDS,
                   payload: { brand: "Nike", isSelected: e.target.checked },
                 })
               }
@@ -231,7 +249,7 @@ export const FilterSideNav = () => {
               id="men"
               onChange={(e) =>
                 filterDispatch({
-                  type: "GENDER",
+                  type: GENDER_SELECT,
                   payload: { gender: "men", isSelected: e.target.checked },
                 })
               }
@@ -245,7 +263,7 @@ export const FilterSideNav = () => {
               id="women"
               onChange={(e) =>
                 filterDispatch({
-                  type: "GENDER",
+                  type: GENDER_SELECT,
                   payload: { gender: "women", isSelected: e.target.checked },
                 })
               }

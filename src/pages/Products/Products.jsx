@@ -1,7 +1,7 @@
 import "./products.css";
 import { Card, FilterSideNav } from "../../components";
 import { useProducts } from "../../context/product-context";
-import { useProductFilter } from "../../context/prodfilter-context";
+import { useProductFilter } from "../../context/productFilter-context";
 import {
   getSortedProducts,
   getProductsWithSelectedRatings,

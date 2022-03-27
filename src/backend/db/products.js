@@ -1,11 +1,35 @@
 import { v4 as uuid } from "uuid";
 
-/**
- * Product Database can be added here.
- * You can add products of your wish with different attributes
- * */
-// import { cap1, cap2, cap3, cap4, cap5, cap6, cap7, cap8, cap9, cap10, cap11, cap12, cap13, cap14 } from "../../assets"
-import {cap1, cap2, cap3, cap4, cap5, cap6, cap7, cap8, shoe1, shoe2, shoe3, shoe4, shoe5, shoe6, shoe7, shoe8, shoe9, shoe10, glasses1, glasses2, glasses3, glasses4, glasses5, glasses6, glasses7, glasses8, glasses9, glasses10} from "../../assets";
+import {
+  cap1,
+  cap2,
+  cap3,
+  cap4,
+  cap5,
+  cap6,
+  cap7,
+  cap8,
+  shoe1,
+  shoe2,
+  shoe3,
+  shoe4,
+  shoe5,
+  shoe6,
+  shoe7,
+  shoe8,
+  shoe9,
+  shoe10,
+  glasses1,
+  glasses2,
+  glasses3,
+  glasses4,
+  glasses5,
+  glasses6,
+  glasses7,
+  glasses8,
+  glasses9,
+  glasses10,
+} from "../../assets";
 
 export const products = [
   {

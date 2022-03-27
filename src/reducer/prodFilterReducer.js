@@ -1,11 +1,13 @@
-const HIGH_TO_LOW = "HIGH_TO_LOW";
-const LOW_TO_HIGH = "LOW_TO_HIGH";
-const PRICE_RANGE_FILTER = "PRICE_RANGE_FILTER";
-const CLEAR_FILTERS = "CLEAR_FILTERS";
-const CATEGORIES = "CATEGORIES";
-const GENDERSELECT = "GENDER";
-const BRANDS = "BRANDS";
-const rating = ["1", "2", "3", "4"];
+import {
+  HIGH_TO_LOW,
+  LOW_TO_HIGH,
+  RATING,
+  CATEGORIES,
+  BRANDS,
+  GENDER_SELECT,
+  PRICE_RANGE_FILTER,
+  CLEAR_FILTERS,
+} from "../shared/types";
 
 export function prodFilterReducer(state, action) {
   const { payload } = action;
@@ -16,17 +18,8 @@ export function prodFilterReducer(state, action) {
     case LOW_TO_HIGH:
       return { ...state, sortBy: LOW_TO_HIGH };
 
-    case rating[3]:
-      return { ...state, rating: rating[3] };
-
-    case rating[2]:
-      return { ...state, rating: rating[2] };
-
-    case rating[1]:
-      return { ...state, rating: rating[1] };
-
-    case rating[0]:
-      return { ...state, rating: rating[0] };
+    case RATING:
+      return { ...state, rating: payload.rating };
 
     case CATEGORIES:
       if (payload.isSelected) {
@@ -56,7 +49,7 @@ export function prodFilterReducer(state, action) {
         };
       }
 
-    case GENDERSELECT:
+    case GENDER_SELECT:
       if (payload.isSelected) {
         return {
           ...state,
