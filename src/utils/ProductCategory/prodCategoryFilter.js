@@ -1,14 +1,11 @@
 
-const getProductsWithSelectedCategory = ( availableProducts, { catergoryName } ) => {
-    if (catergoryName) {
-        return [...availableProducts.filter(item => item.includes(catergoryName))];
-    }
-    return availableProducts;
+const getProductsWithSelectedCategory = ( availableProducts, categories ) => {
 
-//     if(categories.length>0)
-//     return items.filter(item=>categories.includes(item.categoryName))
+    if(categories.length>0)
+    return availableProducts.filter(item=>categories.includes(item.categoryName))
 
-// return items;
+return availableProducts;
+
 }
 
 export { getProductsWithSelectedCategory };

@@ -1,6 +1,6 @@
 import "./card.css";
 
-export const Card = ({title, subtitle, price, rating = 1, categoryName}) => {
+export const Card = ({title, subtitle, price, rating = 1, categoryName, brand}) => {
     return (
         <>
             <div className="card">
@@ -13,7 +13,7 @@ export const Card = ({title, subtitle, price, rating = 1, categoryName}) => {
                     <div className="card-pricing">
                         <p>{ price }</p>
                         <strike>{categoryName}</strike>
-                        <p className="small-font">(50% OFF)</p>
+                        <p className="small-font">(50% OFF) {brand}</p>
                         <p>{rating} ⭐</p>
                     </div>
                 </div>

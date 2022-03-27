@@ -3,18 +3,18 @@ import { useProductFilter } from "../../context/prodfilter-context";
 
 export const FilterSideNav = () => {
     const { filterState, filterDispatch } = useProductFilter();
-    const { sortBy, rating, categoryName, priceRange } = filterState;
+    const { sortBy, rating, priceRange } = filterState;
     return (
         <>
             <aside className="prod-filters">
                 <div className="filter-header">
                     <h4 className="section-heading">FILTERS</h4>
-                    <button className="btn btn-secondary-text text-s">Clear</button>
+                    <button className="btn btn-secondary-text text-s" onClick={() => filterDispatch({type: "CLEAR_FILTERS"})}>Clear</button>
                 </div>
                 <div className="separator"></div>
                 <h5 className="section-heading">Price range(Rs) {priceRange}</h5>
                 <div className="slider-container">
-                    <input id="slide" type="range" min="0" max="10000" value={priceRange} className="slider" onChange={(event) => filterDispatch({type: "PRICE_RANGE_FILTER", payload: {priceRange: event.target.value}})}/>
+                    <input id="slide" type="range" min="0" max="10000" defaultValue={priceRange} className="slider" onChange={(event) => filterDispatch({type: "PRICE_RANGE_FILTER", payload: {priceRange: event.target.value}})}/>
                     <div className="slider-range-value">
                         <p id="slider-min">0</p>
                         <p id="slider-max">10000</p>
@@ -42,27 +42,32 @@ export const FilterSideNav = () => {
                 <h5 className="section-heading">Categories</h5>
                 <ul>
                     <li>
-                        <input type="checkbox" name="category-1" id="category-1" checked={ categoryName === "caps"} onChange={ () => filterDispatch({type: 'caps'})}/><label htmlFor="category-1"> Caps</label>
+                        <input type="checkbox" name="category-1" id="category-1"  onChange={ (e) => filterDispatch({type: "CATEGORIES",payload:{categoryName: 'caps',isSelected:e.target.checked}})}/><label htmlFor="category-1"> Caps</label>
                     </li>
                     <li>
-                        <input type="checkbox" name="category-2" id="category-2" checked={ categoryName === "glasses"} onChange={ () => filterDispatch({type: 'glasses'})}/><label htmlFor="category-2"> Glasses</label>
+                        <input type="checkbox" name="category-2" id="category-2" onChange={ (e) => filterDispatch({type: "CATEGORIES",payload:{categoryName:'glasses',isSelected:e.target.checked}})}/><label htmlFor="category-2"> Glasses</label>
                     </li>
                     <li>
-                        <input type="checkbox" name="category-3" id="category-3" checked={ categoryName === "shoes"} onChange={ () => filterDispatch({type: 'shoes'})}/><label htmlFor="category-3"> Shoes</label> 
+                        <input type="checkbox" name="category-3" id="category-3" onChange={ (e) => filterDispatch({type: "CATEGORIES",payload:{categoryName:'shoes',isSelected:e.target.checked}})}/><label htmlFor="category-3"> Shoes</label> 
                     </li>
                     <li>
-                        <input type="checkbox" name="category-4" id="category-4" checked={ categoryName === "partywear"} onChange={ () => filterDispatch({type: 'partywear'})}/><label htmlFor="category-4"> Party wear</label>
+                        <input type="checkbox" name="category-4" id="category-4" onChange={ (e) => filterDispatch({type: "CATEGORIES",payload:{categoryName:'partywear',isSelected:e.target.checked}})}/><label htmlFor="category-4"> Party wear</label>
                     </li>
                 </ul>
                 <div className="separator"></div>
                 <h5 className="section-heading">Brands</h5>
                 <ul>
-                    <li><input type="checkbox" name="brand-1" id="brand-1" /><label htmlFor="brand-1"> Adidas</label></li>
-                    <li><input type="checkbox" name="brand-2" id="brand-2" /><label htmlFor="brand-2"> H&M</label></li>
-                    <li><input type="checkbox" name="brand-3" id="brand-3" /><label htmlFor="brand-3"> Ray Ban</label></li>
-                    <li><input type="checkbox" name="brand-3" id="brand-4" /><label htmlFor="brand-4"> Nike</label></li>
+                    <li><input type="checkbox" name="brand-1" id="brand-1" onChange={ (e) => filterDispatch({type: "BRANDS",payload:{brand:'Adidas',isSelected:e.target.checked}})}/><label htmlFor="brand-1"> Adidas</label></li>
+                    <li><input type="checkbox" name="brand-2" id="brand-2" onChange={ (e) => filterDispatch({type: "BRANDS",payload:{brand:'H&M',isSelected:e.target.checked}})}/><label htmlFor="brand-2"> H&M</label></li>
+                    <li><input type="checkbox" name="brand-3" id="brand-3" onChange={ (e) => filterDispatch({type: "BRANDS",payload:{brand:'Ray Ban',isSelected:e.target.checked}})}/><label htmlFor="brand-3"> Ray Ban</label></li>
+                    <li><input type="checkbox" name="brand-3" id="brand-4" onChange={ (e) => filterDispatch({type: "BRANDS",payload:{brand:'Nike',isSelected:e.target.checked}})}/><label htmlFor="brand-4"> Nike</label></li>
                 </ul>
                 <div className="separator"></div>
+                <h5 className="section-heading">Brands</h5>
+                <ul>
+                    <li><input type="checkbox" name="men" id="men" onChange={ (e) => filterDispatch({type: "GENDER",payload:{gender:'men',isSelected:e.target.checked}})}/><label htmlFor="men"> Men</label></li>
+                    <li><input type="checkbox" name="women" id="women" onChange={ (e) => filterDispatch({type: "GENDER",payload:{gender:'women',isSelected:e.target.checked}})}/><label htmlFor="women"> Women</label></li>
+                </ul>
             </aside>
         </>
     );

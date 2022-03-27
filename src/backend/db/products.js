@@ -12,7 +12,9 @@ export const products = [
     author: "Shiv Khera",
     price: "5000",
     categoryName: "caps",
+    brand: "Adidas",
     rating: '5',
+    gender: "men",
   },
   {
     _id: uuid(),
@@ -20,7 +22,9 @@ export const products = [
     author: "Junaid Qureshi",
     price: "3000",
     categoryName: "glasses",
+    brand: "H&M",
     rating: '3',
+    gender: "women",
   },
   {
     _id: uuid(),
@@ -28,7 +32,9 @@ export const products = [
     author: "x",
     price: "1000",
     categoryName: "party wear",
+    brand: "Ray Ban",
     rating: '2',
+    gender: "Men",
   },
   {
     _id: uuid(),
@@ -37,6 +43,8 @@ export const products = [
     price: "900",
     categoryName: "caps",
     rating: '2',
+    brand: "Nike",
+    gender: "Women",
   },
   {
     _id: uuid(),
@@ -45,5 +53,7 @@ export const products = [
     price: "200",
     categoryName: "shoes",
     rating: '1',
+    brand: "Nike",
+    gender: "Men"
   },
 ];

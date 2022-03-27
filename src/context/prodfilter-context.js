@@ -9,6 +9,8 @@ const ProductFilterProvider = ( { children } ) => {
         rating: '',
         categories: [],
         priceRange: 0,
+        brands: [],
+        genderSelect: [],
     }
     const [ filterState, filterDispatch ] = useReducer(prodFilterReducer, defaultFilter);
     return (
