@@ -18,13 +18,13 @@ export const Footer = () => {
             <h3>Userful links</h3>
             <ul>
                 <li>
-                    <a href="">FAQ</a>
+                    <a href="#">FAQ</a>
                 </li>
                 <li>
-                    <a href="">T & C</a>
+                    <a href="#">T & C</a>
                 </li>
                 <li>
-                    <a href="">Track orders</a>
+                    <a href="#">Track orders</a>
                 </li>
             </ul>
         </footer>
