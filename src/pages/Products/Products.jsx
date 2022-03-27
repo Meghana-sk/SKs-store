@@ -1,27 +1,28 @@
-import "./products.css"
+import "./products.css";
 import { Card, FilterSideNav } from "../../components";
+import { useProducts } from "../../context/product-context";
 
 const Products = () => {
-    return (
-        <>
-            <main className="prod-content">
-                <FilterSideNav />
-                <section className="prod-section">
-                    <h3>Products</h3>
-                    <div className="card-container">
-                        <Card />
-                        <Card />
-                        <Card />
-                        <Card />
-                        <Card />
-                        <Card />
-                        <Card />
-                        <Card />
-                    </div>
-                </section>
-            </main>
-        </>
-    );
-}
+  const { availableProducts } = useProducts();
+
+  return (
+    <>
+      <main className="prod-content">
+        <FilterSideNav />
+        <section className="prod-section">
+          <h3>
+            Showing Products{" "}
+            {`${availableProducts.length} / ${availableProducts.length}`}
+          </h3>
+          <div className="card-container">
+            {availableProducts.map((item) => (
+              <Card {...item} />
+            ))}
+          </div>
+        </section>
+      </main>
+    </>
+  );
+};
 
 export { Products };

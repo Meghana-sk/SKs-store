@@ -1,8 +1,11 @@
 .prod-filters {
-    width: 40vw;
+    width: 100vw;
+    height: 85vh;
     margin: 0.5rem;
     border-right: 1px solid var(--offline-gray);
     padding: 1rem;
+    overflow-y: scroll;
+    scroll-behavior: auto;
 }
 
 .prod-filters ul {
