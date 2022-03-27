@@ -1,19 +1,19 @@
 import "./card.css";
 
-export const Card = () => {
+export const Card = ( {title, subtitle, price, imgSrc, rating} ) => {
     return (
         <>
             <div className="card">
                 <div className="card-content">
                     <h6 className="card-badge">NEW</h6>
                     <div className="wishlist"><i className="fas fa-times"></i></div>
-                    <img src="" alt="cap" className="card-img" />
-                    <h3 className="card-title">Card title</h3>
-                    <p className="card-subtitle">Sub title</p>
+                    <img src={imgSrc} alt="cap" className="card-img" />
+                    <h3 className="card-title">{title}</h3>
+                    <p className="card-subtitle">{subtitle}</p>
                     <div className="card-pricing">
-                        <p>Rs 500</p>
+                        <p>{price}</p>
                         <strike>Rs 1000</strike>
-                        <p className="small-font">(50% OFF)</p>
+                        <p className="small-font">{rating}⭐</p>
                     </div>
                 </div>
                 <div className="card-footer">
