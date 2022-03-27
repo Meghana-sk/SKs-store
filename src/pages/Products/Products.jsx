@@ -4,24 +4,24 @@ import { useProducts } from "../../context/product-context";
 
 const Products = () => {
     const { availableProducts } = useProducts();
-    console.log("Hey", availableProducts)
-    
+
     return (
         <>
             <main className="prod-content">
                 <FilterSideNav />
                 <section className="prod-section">
-                    <h3>Products</h3>
+                    <h3>Showing Products { `${availableProducts.length} / ${availableProducts.length}` }</h3>
                     <div className="card-container">
                         {
                             availableProducts.map(({
+                                _id,
+                                title,
                                 price, 
                                 subtitle, 
                                 rating, 
-                                _id, 
-                                categoryName, 
-                                brand}) => (
-                                <Card key={_id} price={price} title={subtitle} rating={rating} brand={brand} categoryName={categoryName}/>
+                                imgSrc
+                                }) => (
+                                <Card key={_id} price={price} title={title} subtitle={subtitle} rating={rating} imgSrc={imgSrc}/>
                             ))}
                     </div>
                 </section>

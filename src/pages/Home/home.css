@@ -48,27 +48,6 @@
     background-color: var(--offline-gray);
     font-size: 2rem;
     color: var(--dark-theme-bg-color);
-}
-
-.cat-one {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.cat-two {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.cat-three {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.cat-four {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
