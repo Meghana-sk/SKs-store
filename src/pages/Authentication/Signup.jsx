@@ -1,7 +1,32 @@
 import "./auth.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useEffect } from "react";
 
 const Signup = () => {
+  useEffect(() => {
+    (async () => {
+      try {
+        const userCredentials = await axios.post("/api/auth/signup", {
+          email: "sk@gmail.com",
+          password: "test@123",
+        });
+        if (userCredentials.status === 201) {
+          localStorage.setItem(
+            "userAuthToken",
+            userCredentials.data.encodedToken
+          );
+          localStorage.setItem(
+            "user",
+            JSON.stringify(userCredentials.data.createdUser)
+          );
+        }
+        console.log("respfrom server", userCredentials);
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  });
   return (
     <>
       <section className="auth-container">

@@ -2,6 +2,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { Navbar, Footer } from "./components";
 import { Home, Login, Logout, Signup, Products, Cart, Wishlist } from "./pages";
+import Mockman from "mockman-js";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/mock" element={<Mockman />} />
         </Routes>
       </div>
       <Footer />
