@@ -1,13 +1,19 @@
 import axios from "axios";
-import { useState, createContext, useContext, useEffect } from "react";
+import { useState, createContext, useContext, useReducer } from "react";
+import { authReducer } from "../reducer/authReducer";
 
-const AuthContext = createContext();
+const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
-  useEffect(() => {
-    (async () => {})();
-  }, []);
-  return <AuthContext.Provider value={{}}>{children}</AuthContext.Provider>;
+  const [authState, authDispatch] = useReducer(authReducer, {
+    user: "",
+    token: "",
+  });
+  return (
+    <AuthContext.Provider value={{ authState, authDispatch }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
 const useAuth = () => useContext(AuthContext);

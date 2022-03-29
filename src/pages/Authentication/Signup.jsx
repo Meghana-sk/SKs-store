@@ -1,32 +1,58 @@
 import "./auth.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useAuth } from "../../context/auth-context";
+import { SIGNUP } from "../../shared/types";
 
 const Signup = () => {
-  useEffect(() => {
-    (async () => {
-      try {
-        const userCredentials = await axios.post("/api/auth/signup", {
-          email: "sk@gmail.com",
-          password: "test@123",
-        });
-        if (userCredentials.status === 201) {
-          localStorage.setItem(
-            "userAuthToken",
-            userCredentials.data.encodedToken
-          );
-          localStorage.setItem(
-            "user",
-            JSON.stringify(userCredentials.data.createdUser)
-          );
-        }
-        console.log("respfrom server", userCredentials);
-      } catch (error) {
-        console.error(error);
-      }
-    })();
+  const [userCredentials, setUserCredentials] = useState({
+    email: "",
+    password: "",
+    firstName: "",
+    lastName: "",
   });
+
+  const [authDispatch] = useAuth();
+  const navigate = useNavigate();
+
+  const setUserCredentialsInDB = async () => {
+    try {
+      const userCredentials = await axios.post("/api/auth/signup", {
+        email: email,
+        password: password,
+      });
+      if (userCredentials.status === 201) {
+        localStorage.setItem(
+          "userAuthToken",
+          userCredentials.data.encodedToken
+        );
+        localStorage.setItem(
+          "user",
+          JSON.stringify(userCredentials.data.createdUser)
+        );
+      }
+      authDispatch({
+        type: SIGNUP,
+        payload: {
+          user: userCredentials.data.createdUser,
+          token: userCredentials.data.encodedToken,
+        },
+      });
+      navigate("/");
+      console.log("respfrom server", userCredentials);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const signupHandler = () => {
+    if (email && password) {
+      setUserCredentialsInDB();
+    }
+  };
   return (
     <>
       <section className="auth-container">
@@ -37,7 +63,7 @@ const Signup = () => {
               <i className="fas fa-times"></i>
             </Link>
           </header>
-          <form action="">
+          <form action="submit" onSubmit={signupHandler}>
             <div className="input-box">
               <label className="input-label fw-600">First name</label>
               <input className="input-text" type="text" required />
@@ -48,11 +74,21 @@ const Signup = () => {
             </div>
             <div className="input-box">
               <label className="input-label fw-600">Email</label>
-              <input className="input-text" type="email" required />
+              <input
+                className="input-text"
+                type="email"
+                required
+                onChange={(event) => setEmail(event.target.value)}
+              />
             </div>
             <div className="input-box">
               <label className="input-label fw-600">Password</label>
-              <input className="input-text" type="password" required />
+              <input
+                className="input-text"
+                type="password"
+                required
+                onChange={(event) => setPassword(event.target.value)}
+              />
             </div>
             <div className="input-box">
               <label className="input-label fw-600">Confirm Password</label>
