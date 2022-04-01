@@ -1,5 +1,4 @@
-import axios from "axios";
-import { useState, createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer } from "react";
 import { authReducer } from "../reducer/authReducer";
 
 const AuthContext = createContext(null);
