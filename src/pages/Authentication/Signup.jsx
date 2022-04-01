@@ -1,7 +1,7 @@
 import "./auth.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAuth } from "../../context/auth-context";
 import { SIGNUP } from "../../shared/types";
 
@@ -9,50 +9,47 @@ const Signup = () => {
   const [userCredentials, setUserCredentials] = useState({
     email: "",
     password: "",
+    confirmPassword: "",
     firstName: "",
     lastName: "",
   });
 
-  const [authDispatch] = useAuth();
+  const { authDispatch } = useAuth();
   const navigate = useNavigate();
 
-  const setUserCredentialsInDB = async () => {
-    try {
-      const userCredentials = await axios.post("/api/auth/signup", {
-        email: email,
-        password: password,
-      });
-      if (userCredentials.status === 201) {
-        localStorage.setItem(
-          "userAuthToken",
-          userCredentials.data.encodedToken
-        );
-        localStorage.setItem(
-          "user",
-          JSON.stringify(userCredentials.data.createdUser)
-        );
+  const signupHandler = async (e) => {
+    e.preventDefault();
+    if (userCredentials.password === userCredentials.confirmPassword) {
+      try {
+        const response = await axios.post("/api/auth/signup", {
+          email: userCredentials.email,
+          password: userCredentials.password,
+          firstName: userCredentials.firstName,
+          lastName: userCredentials.lastName,
+        });
+        if (response.status === 201) {
+          localStorage.setItem("userAuthToken", response.data.encodedToken);
+          localStorage.setItem(
+            "user",
+            JSON.stringify(response.data.createdUser)
+          );
+          authDispatch({
+            type: SIGNUP,
+            payload: {
+              user: response.data.createdUser,
+              token: response.data.encodedToken,
+            },
+          });
+          navigate("/");
+        }
+      } catch (error) {
+        alert("Could not create account");
       }
-      authDispatch({
-        type: SIGNUP,
-        payload: {
-          user: userCredentials.data.createdUser,
-          token: userCredentials.data.encodedToken,
-        },
-      });
-      navigate("/");
-      console.log("respfrom server", userCredentials);
-    } catch (error) {
-      console.error(error);
+    } else {
+      alert("Password and confirm password do not match");
     }
   };
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const signupHandler = () => {
-    if (email && password) {
-      setUserCredentialsInDB();
-    }
-  };
   return (
     <>
       <section className="auth-container">
@@ -63,14 +60,36 @@ const Signup = () => {
               <i className="fas fa-times"></i>
             </Link>
           </header>
-          <form action="submit" onSubmit={signupHandler}>
+          <form onSubmit={signupHandler}>
             <div className="input-box">
               <label className="input-label fw-600">First name</label>
-              <input className="input-text" type="text" required />
+              <input
+                className="input-text"
+                type="text"
+                required
+                value={userCredentials.firstName}
+                onChange={(event) =>
+                  setUserCredentials({
+                    ...userCredentials,
+                    firstName: event.target.value,
+                  })
+                }
+              />
             </div>
             <div className="input-box">
               <label className="input-label fw-600">Last name</label>
-              <input className="input-text" type="text" required />
+              <input
+                className="input-text"
+                type="text"
+                required
+                value={userCredentials.lastName}
+                onChange={(event) =>
+                  setUserCredentials({
+                    ...userCredentials,
+                    lastName: event.target.value,
+                  })
+                }
+              />
             </div>
             <div className="input-box">
               <label className="input-label fw-600">Email</label>
@@ -78,7 +97,13 @@ const Signup = () => {
                 className="input-text"
                 type="email"
                 required
-                onChange={(event) => setEmail(event.target.value)}
+                value={userCredentials.email}
+                onChange={(event) =>
+                  setUserCredentials({
+                    ...userCredentials,
+                    email: event.target.value,
+                  })
+                }
               />
             </div>
             <div className="input-box">
@@ -87,12 +112,29 @@ const Signup = () => {
                 className="input-text"
                 type="password"
                 required
-                onChange={(event) => setPassword(event.target.value)}
+                value={userCredentials.password}
+                onChange={(event) =>
+                  setUserCredentials({
+                    ...userCredentials,
+                    password: event.target.value,
+                  })
+                }
               />
             </div>
             <div className="input-box">
               <label className="input-label fw-600">Confirm Password</label>
-              <input className="input-text" type="password" required />
+              <input
+                className="input-text"
+                type="password"
+                required
+                value={userCredentials.confirmPassword}
+                onChange={(event) =>
+                  setUserCredentials({
+                    ...userCredentials,
+                    confirmPassword: event.target.value,
+                  })
+                }
+              />
             </div>
             <button className="btn btn-primary text-s">Create account</button>
           </form>

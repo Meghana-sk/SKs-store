@@ -1,7 +1,25 @@
 import "./navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/auth-context";
+import { LOGOUT } from "../../shared/types";
 
 export const Navbar = () => {
+  const { authState, authDispatch } = useAuth();
+  const navigate = useNavigate();
+  const userName = authState.token ? authState.user.firstName : "";
+
+  const logoutHandler = () => {
+    navigate("/");
+    localStorage.removeItem("userAuthToken");
+    localStorage.removeItem("user");
+    authDispatch({ type: LOGOUT });
+  };
+
+  const loginBtnHandler = () => {
+    if (authState.token) {
+      logoutHandler();
+    }
+  };
   return (
     <nav className="nav">
       <Link to="/">
@@ -21,9 +39,19 @@ export const Navbar = () => {
         <li>
           <Link to="/products">Women</Link>
         </li>
+        {authState.token && (
+          <li>
+            <p>{`Hi ${userName}`}</p>
+          </li>
+        )}
         <li>
           <Link to="/login">
-            <button className="btn btn-primary login-btn">Login</button>
+            <button
+              className="btn btn-primary login-btn"
+              onClick={loginBtnHandler}
+            >
+              {authState.token ? "Logout" : "Login"}
+            </button>
           </Link>
         </li>
         <li>
