@@ -19,7 +19,10 @@ const Signup = () => {
 
   const signupHandler = async (e) => {
     e.preventDefault();
-    if (userCredentials.password === userCredentials.confirmPassword) {
+    if (
+      userCredentials.password.length > 8 &&
+      userCredentials.password === userCredentials.confirmPassword
+    ) {
       try {
         const response = await axios.post("/api/auth/signup", {
           email: userCredentials.email,
@@ -45,6 +48,8 @@ const Signup = () => {
       } catch (error) {
         alert("Could not create account");
       }
+    } else if (userCredentials.password.length < 8) {
+      alert("Password should be min 8 characters");
     } else {
       alert("Password and confirm password do not match");
     }
