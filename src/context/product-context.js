@@ -13,7 +13,7 @@ const ProductsProvider = ({ children }) => {
         if (productsData.status === 200)
           setAvailableProducts(productsData.data.products);
       } catch (error) {
-        console.log(error);
+        alert(error);
       }
     })();
   }, []);
