@@ -2,14 +2,17 @@ import "./navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth-context";
 import { LOGOUT } from "../../shared/types";
+import { useCart } from "../../context/cart-context";
 
 export const Navbar = () => {
   const { authState, authDispatch } = useAuth();
+  const { cartState, cartDispatch } = useCart();
   const navigate = useNavigate();
   const userName = authState.token ? authState.user.firstName : "";
 
   const logoutHandler = () => {
     navigate("/");
+    cartDispatch({ type: "CLEAR_CART" });
     localStorage.removeItem("userAuthToken");
     localStorage.removeItem("user");
     authDispatch({ type: LOGOUT });
@@ -61,7 +64,11 @@ export const Navbar = () => {
         </li>
         <li>
           <Link to="/cart">
-            <i className="fas fa-cart-plus"></i>
+            {/* <i className="fas fa-cart-plus"></i> */}
+            <div className="badge-container">
+              <i className="fas fa-cart-plus"></i>
+              <div className="badge badge-icon">{cartState.cart.length}</div>
+            </div>
           </Link>
         </li>
         <div className="close-menu">

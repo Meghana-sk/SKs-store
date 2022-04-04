@@ -1,21 +1,29 @@
 import "./cart.css";
-import { Card } from "../../components";
+import { CartCard } from "../../components";
+import { useCart } from "../../context/cart-context";
+import { useAuth } from "../../context/auth-context";
 
 const Cart = () => {
+  const { cartState } = useCart();
+  const { authState } = useAuth();
+
   return (
     <>
       <main className="prod-select-container">
         <section className="prod-section">
           <h3>
-            Items in your cart<span>(2)</span>
+            Items in your cart
+            <span>
+              ({authState.token && authState.user && cartState.cart.length})
+            </span>
           </h3>
-          <div className="card-container">
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-          </div>
+          {cartState.cart.length && (
+            <div className="card-container">
+              {cartState.cart.map((item) => (
+                <CartCard {...item} />
+              ))}
+            </div>
+          )}
         </section>
         <section className="price-details-container">
           <div className="price-container">

@@ -1,3 +1,8 @@
-.card-content > .card-title, .card-content > .card-subtitle {
-    align-self: flex-start;
+.card-content > .card-title,
+.card-content > .card-subtitle {
+  align-self: flex-start;
+}
+
+.cart-icon:hover {
+  color: white;
 }
