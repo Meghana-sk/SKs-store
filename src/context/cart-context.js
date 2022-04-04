@@ -27,9 +27,7 @@ const CartProvider = ({ children }) => {
         });
         if (response.status === 200)
           cartDispatch({ type: GET_CART_ITEMS, payload: response.data.cart });
-      } catch (err) {
-        alert("login to fetch items from cart");
-      }
+      } catch (err) {}
     };
     if (authState.token !== null) getCartItems();
   }, [authState.token]);
