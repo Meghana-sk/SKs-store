@@ -2,14 +2,39 @@ import "./card.css";
 import { useCart } from "../../context/cart-context";
 import { useAuth } from "../../context/auth-context";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const Card = (props) => {
   const { title, subtitle, price, imgSrc, rating } = props;
-  const { addItemToCart } = useCart();
+  const { addItemToCart, cartState } = useCart();
+  const { cart } = cartState;
   const { authState } = useAuth();
   const navigate = useNavigate();
   const [cartCTABtnText, setCartCTABtnText] = useState("Add to cart");
+  const productInCart = (productId) => {
+    let productExists = cart.findIndex((item) => item._id === productId);
+    return productExists === -1;
+  };
+
+  const addToCartHandler = (props) => {
+    if (
+      authState.token &&
+      cartCTABtnText === "Add to cart" &&
+      productInCart(props._id)
+    ) {
+      addItemToCart(props);
+    } else if (cartCTABtnText !== "Go to cart" && !authState.token)
+      navigate("/login");
+    else if (cartCTABtnText === "Go to cart" && authState.token) {
+      navigate("/cart");
+    }
+  };
+
+  useEffect(() => {
+    productInCart(props._id)
+      ? setCartCTABtnText("Add to cart")
+      : setCartCTABtnText("Go to cart");
+  });
   return (
     <>
       <div className="card">
@@ -30,13 +55,7 @@ export const Card = (props) => {
           <button
             className="btn btn-primary"
             onClick={() => {
-              if (authState.token && cartCTABtnText === "Add to cart") {
-                addItemToCart(props);
-                setCartCTABtnText("Go to cart");
-              } else if (cartCTABtnText !== "Go to cart") navigate("/login");
-              else if (cartCTABtnText === "Go to cart" && authState.token) {
-                navigate("/cart");
-              }
+              addToCartHandler(props);
             }}
           >
             <i className="fas fa-cart-plus cart-icon"></i>

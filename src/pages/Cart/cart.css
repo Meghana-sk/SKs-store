@@ -4,6 +4,7 @@
   align-items: flex-start;
   flex-wrap: wrap-reverse;
   padding: 1rem;
+  min-height: 80vh;
 }
 
 .card-quantity {
