@@ -1,7 +1,7 @@
 .prod-select-container {
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
   flex-wrap: wrap-reverse;
   padding: 1rem;
 }
