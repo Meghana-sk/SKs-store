@@ -52,7 +52,7 @@ const Signup = () => {
       userCredentials.password.length < 8 &&
       userCredentials.confirmPassword.length < 8
     ) {
-      alert("Password should be mre than 8 characters");
+      alert("Password should be more than 8 characters");
     } else {
       alert("Password and confirm password do not match");
     }

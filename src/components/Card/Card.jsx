@@ -34,7 +34,7 @@ export const Card = (props) => {
     productInCart(props._id)
       ? setCartCTABtnText("Add to cart")
       : setCartCTABtnText("Go to cart");
-  });
+  }, []);
   return (
     <>
       <div className="card">

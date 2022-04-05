@@ -2,10 +2,12 @@ import "./cart.css";
 import { CartCard, PriceDetailsCard } from "../../components";
 import { useCart } from "../../context/cart-context";
 import { useAuth } from "../../context/auth-context";
+import { cartPriceCalculator } from "../../utils";
 
 const Cart = () => {
   const { cartState } = useCart();
   const { authState } = useAuth();
+  const { price } = cartPriceCalculator(cartState.cart);
 
   return (
     <>
@@ -24,7 +26,7 @@ const Cart = () => {
               ))}
             </div>
           </section>
-          <PriceDetailsCard />
+          <PriceDetailsCard price={price} cart={cartState.cart} />
         </main>
       ) : (
         <p className="prod-select-container">Your cart is empty :(</p>

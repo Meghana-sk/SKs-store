@@ -1,5 +1,6 @@
 import "./card.css";
-export const PriceDetailsCard = () => {
+
+export const PriceDetailsCard = ({ price, cart }) => {
   return (
     <section className="price-details-container">
       <div className="price-container">
@@ -7,9 +8,9 @@ export const PriceDetailsCard = () => {
         <div className="price-details">
           <div className="price-detail-row">
             <div>
-              Price<span>(2 item)</span>
+              Price<span>({cart.length} items)</span>
             </div>
-            <div>Rs 1300</div>
+            <div>Rs {price}</div>
           </div>
           <div className="price-detail-row">
             <div>Discount</div>
@@ -22,11 +23,11 @@ export const PriceDetailsCard = () => {
           <div className="separator"></div>
           <div className="price-detail-row">
             <div>Total</div>
-            <div>Rs 1000</div>
+            <div>Rs {price - 300}</div>
           </div>
           <div className="separator"></div>
           <div>
-            You will save Rs<span>300</span> on this order
+            You will save Rs <span>300</span> on this order
           </div>
           <button className="btn btn-primary text-s">Place order</button>
         </div>
