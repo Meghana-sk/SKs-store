@@ -45,7 +45,7 @@ const CartProvider = ({ children }) => {
       alert(err);
     }
   };
-  const updateProductQty = async (_id, actionType) => {
+  const updateProductQty = async (_id, actionType, setBtnDisabled) => {
     try {
       const response = await axios.post(
         `/api/user/cart/${_id}`,
@@ -62,8 +62,10 @@ const CartProvider = ({ children }) => {
         type: actionType === "increment" ? INCREMENT_ITEM : DECREMENT_ITEM,
         payload: response.data.cart,
       });
+      setBtnDisabled(false);
     } catch (err) {
       alert(err);
+      setBtnDisabled(false);
     }
   };
 

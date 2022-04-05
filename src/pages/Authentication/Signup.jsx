@@ -48,8 +48,11 @@ const Signup = () => {
       } catch (error) {
         alert("Could not create account");
       }
-    } else if (userCredentials.password.length < 8) {
-      alert("Password should be min 8 characters");
+    } else if (
+      userCredentials.password.length < 8 &&
+      userCredentials.confirmPassword.length < 8
+    ) {
+      alert("Password should be mre than 8 characters");
     } else {
       alert("Password and confirm password do not match");
     }
@@ -118,12 +121,12 @@ const Signup = () => {
                 type="password"
                 required
                 value={userCredentials.password}
-                onChange={(event) =>
+                onChange={(event) => {
                   setUserCredentials({
                     ...userCredentials,
                     password: event.target.value,
-                  })
-                }
+                  });
+                }}
               />
             </div>
             <div className="input-box">
@@ -133,12 +136,12 @@ const Signup = () => {
                 type="password"
                 required
                 value={userCredentials.confirmPassword}
-                onChange={(event) =>
+                onChange={(event) => {
                   setUserCredentials({
                     ...userCredentials,
                     confirmPassword: event.target.value,
-                  })
-                }
+                  });
+                }}
               />
             </div>
             <button className="btn btn-primary text-s">Create account</button>

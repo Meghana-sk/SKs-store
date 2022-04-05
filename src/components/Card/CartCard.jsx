@@ -1,8 +1,10 @@
 import "./card.css";
 import { useCart } from "../../context/cart-context";
+import { useState } from "react";
 export const CartCard = (props) => {
   const { title, subtitle, price, imgSrc, rating, _id, qty } = props;
   const { updateProductQty, deleteItemFromCart } = useCart();
+  const [addBtnDisabled, setDisabled] = useState(false);
   return (
     <>
       <div className="card card-horizontal">
@@ -17,20 +19,21 @@ export const CartCard = (props) => {
           <div className="card-quantity">
             <button
               className={`btn btn-secondary-outline btn-small qty-btn ${
-                qty === 1 ? "btn-disabled" : null
+                qty <= 1 ? "btn-disabled" : null
               }`}
-              disabled={qty === 1}
               onClick={() => {
-                updateProductQty(_id, "decrement");
+                setDisabled(true);
+                updateProductQty(_id, "decrement", setDisabled);
               }}
+              disabled={addBtnDisabled}
             >
               -
             </button>
-            <p>{qty}</p>
+            <p>{qty >= 1 ? qty : ""}</p>
             <button
               className="btn btn-secondary-outline btn-small qty-btn"
               onClick={() => {
-                updateProductQty(_id, "increment");
+                updateProductQty(_id, "increment", setDisabled);
               }}
             >
               +
