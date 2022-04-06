@@ -1,4 +1,5 @@
 .auth-container {
+  min-width: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,7 +14,6 @@
 }
 
 .auth-content {
-  max-width: 400px;
   display: flex;
   flex-direction: column;
   background-color: var(--offline-gray);
@@ -45,4 +45,10 @@ i:hover {
 
 .login-hint {
   color: var(--secondary-color-hover);
+}
+
+.eye-icon {
+  background-color: var(--white-color);
+  padding: 10px;
+  border-radius: 5px;
 }

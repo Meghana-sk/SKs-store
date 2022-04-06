@@ -13,6 +13,7 @@ const Login = () => {
     password: "",
   });
 
+  const [showPassword, setShowPassword] = useState(false);
   const loginHandler = async (e) => {
     e.preventDefault();
     try {
@@ -65,28 +66,38 @@ const Login = () => {
             onSubmit={loginHandler}
           >
             <div className="input-box">
-              <label className="input-label fw-600">Email</label>
-              <input
-                className="input-text"
-                type="email"
-                required
-                value={setUserInfo.email}
-                onChange={(event) =>
-                  setUserInfo({ ...userInfo, email: event.target.value })
-                }
-              />
+              <label className="input-label fw-600">
+                Email
+                <input
+                  className="input-text"
+                  type="email"
+                  required
+                  value={setUserInfo.email}
+                  onChange={(event) =>
+                    setUserInfo({ ...userInfo, email: event.target.value })
+                  }
+                />
+              </label>
             </div>
             <div className="input-box">
-              <label className="input-label fw-600">Password</label>
-              <input
-                className="input-text"
-                type="password"
-                required
-                value={setUserInfo.password}
-                onChange={(event) =>
-                  setUserInfo({ ...userInfo, password: event.target.value })
-                }
-              />
+              <label className="input-label fw-600">
+                Password
+                <input
+                  className="input-text"
+                  type={showPassword ? "text" : "password"}
+                  required
+                  value={setUserInfo.password}
+                  onChange={(event) =>
+                    setUserInfo({ ...userInfo, password: event.target.value })
+                  }
+                />
+                <i
+                  className={`fa ${
+                    showPassword ? "fa-eye" : "fa-eye-slash"
+                  } eye-icon`}
+                  onClick={() => setShowPassword((show) => !show)}
+                ></i>
+              </label>
             </div>
             <button className="btn btn-primary text-s">Login</button>
           </form>
