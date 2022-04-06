@@ -7,7 +7,7 @@ import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
-  const {authDispatch} = useAuth();
+  const { authDispatch } = useAuth();
   const [userInfo, setUserInfo] = useState({
     email: "",
     password: "",
@@ -16,11 +16,11 @@ const Login = () => {
   const loginHandler = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("/api/auth/login",{
+      const response = await axios.post("/api/auth/login", {
         email: userInfo.email,
         password: userInfo.password,
-      })
-      switch(response.status) {
+      });
+      switch (response.status) {
         case 200:
           localStorage.setItem("userAuthToken", response.data.encodedToken);
           localStorage.setItem("user", JSON.stringify(response.data.foundUser));
@@ -44,10 +44,10 @@ const Login = () => {
           break;
         default:
       }
-    } catch(e) {
-      alert("User not found. Signup now!")
+    } catch (e) {
+      alert("User not found. Signup now!");
     }
-  }
+  };
 
   return (
     <>

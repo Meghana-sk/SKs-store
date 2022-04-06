@@ -1,15 +1,18 @@
 import "./navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth-context";
-import { LOGOUT } from "../../shared/types";
+import { LOGOUT, CLEAR_CART } from "../../shared/types";
+import { useCart } from "../../context/cart-context";
 
 export const Navbar = () => {
   const { authState, authDispatch } = useAuth();
+  const { cartState, cartDispatch } = useCart();
   const navigate = useNavigate();
   const userName = authState.token ? authState.user.firstName : "";
 
   const logoutHandler = () => {
     navigate("/");
+    cartDispatch({ type: CLEAR_CART });
     localStorage.removeItem("userAuthToken");
     localStorage.removeItem("user");
     authDispatch({ type: LOGOUT });
@@ -45,7 +48,7 @@ export const Navbar = () => {
           </li>
         )}
         <li>
-          <Link to="/login">
+          <Link to={authState.token ? "/logout" : "/login"}>
             <button
               className="btn btn-primary login-btn"
               onClick={loginBtnHandler}
@@ -61,7 +64,12 @@ export const Navbar = () => {
         </li>
         <li>
           <Link to="/cart">
-            <i className="fas fa-cart-plus"></i>
+            <div className="badge-container">
+              <i className="fas fa-cart-plus"></i>
+              {cartState.cart.length !== 0 ? (
+                <div className="badge badge-icon">{cartState.cart.length}</div>
+              ) : null}
+            </div>
           </Link>
         </li>
         <div className="close-menu">

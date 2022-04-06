@@ -1,3 +1,30 @@
-.card-content > .card-title, .card-content > .card-subtitle {
-    align-self: flex-start;
+.card-content > .card-title,
+.card-content > .card-subtitle {
+  align-self: flex-start;
+}
+
+.cart-icon:hover {
+  color: white;
+}
+
+.price-details-container {
+  margin-top: 3rem;
+}
+
+.price-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.price-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.price-detail-row {
+  display: flex;
+  justify-content: space-between;
 }

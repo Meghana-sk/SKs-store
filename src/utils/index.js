@@ -6,3 +6,4 @@ export {
   getProductsWithSelectedCategory,
   getProductsWithSelectedGender,
 } from "./filterByCategory";
+export { cartPriceCalculator } from "./cartPriceDetailsCalculator";
