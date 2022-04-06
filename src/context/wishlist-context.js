@@ -25,7 +25,6 @@ const WishlistProvider = ({ children }) => {
             authorization: authState.token,
           },
         });
-        console.log("wishlist ", response);
         if (response.status === 200)
           wishlistDispatch({
             type: GET_WISHLIST_ITEMS,
@@ -59,7 +58,6 @@ const WishlistProvider = ({ children }) => {
       const response = await axios.delete(`/api/user/wishlist/${_id}`, {
         headers: { authorization: authState.token },
       });
-      console.log("del", response);
       wishlistDispatch({
         type: REMOVE_FROM_WISHLIST,
         payload: response.data.wishlist,

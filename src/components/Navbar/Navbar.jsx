@@ -27,7 +27,6 @@ export const Navbar = () => {
     }
   };
 
-  console.log("wihslist state", wishlistState.wishlist.length);
   return (
     <nav className="nav">
       <Link to="/">
@@ -41,12 +40,6 @@ export const Navbar = () => {
         <i className="fas fa-bars"></i>
       </div>
       <ul className="main-menu text-s fw-600">
-        <li>
-          <Link to="/products">Men</Link>
-        </li>
-        <li>
-          <Link to="/products">Women</Link>
-        </li>
         {authState.token && (
           <li>
             <p>{`Hi ${userName}`}</p>
