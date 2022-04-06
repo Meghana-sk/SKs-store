@@ -1,18 +1,21 @@
 import "./navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth-context";
-import { LOGOUT, CLEAR_CART } from "../../shared/types";
+import { LOGOUT, CLEAR_CART, CLEAR_WISHLIST } from "../../shared/types";
 import { useCart } from "../../context/cart-context";
+import { useWishlist } from "../../context/wishlist-context";
 
 export const Navbar = () => {
   const { authState, authDispatch } = useAuth();
   const { cartState, cartDispatch } = useCart();
+  const { wishlistState, wishlistDisptach } = useWishlist();
   const navigate = useNavigate();
   const userName = authState.token ? authState.user.firstName : "";
 
   const logoutHandler = () => {
     navigate("/");
     cartDispatch({ type: CLEAR_CART });
+    wishlistDisptach({ type: CLEAR_WISHLIST });
     localStorage.removeItem("userAuthToken");
     localStorage.removeItem("user");
     authDispatch({ type: LOGOUT });
@@ -23,6 +26,8 @@ export const Navbar = () => {
       logoutHandler();
     }
   };
+
+  console.log("wihslist state", wishlistState.wishlist.length);
   return (
     <nav className="nav">
       <Link to="/">
@@ -59,15 +64,24 @@ export const Navbar = () => {
         </li>
         <li>
           <Link to="/wishlist">
-            <i className="fas fa-heart"></i>
+            <div className="badge-container">
+              <i className="fas fa-heart fa-2x"></i>
+              {wishlistState.wishlist.length ? (
+                <span className="badge badge-icon">
+                  {wishlistState.wishlist.length}
+                </span>
+              ) : null}
+            </div>
           </Link>
         </li>
         <li>
           <Link to="/cart">
             <div className="badge-container">
-              <i className="fas fa-cart-plus"></i>
-              {cartState.cart.length !== 0 ? (
-                <div className="badge badge-icon">{cartState.cart.length}</div>
+              <i className="fas fa-cart-plus fa-2x"></i>
+              {cartState.cart.length ? (
+                <span className="badge badge-icon">
+                  {cartState.cart.length}
+                </span>
               ) : null}
             </div>
           </Link>

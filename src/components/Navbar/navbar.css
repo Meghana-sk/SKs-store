@@ -42,6 +42,7 @@
 .nav li a {
   text-decoration: none;
   color: var(--secondary-dark-blue-hover);
+  margin: 0.2rem;
 }
 
 .nav li a:hover {
