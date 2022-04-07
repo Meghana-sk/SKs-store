@@ -132,6 +132,7 @@ export const FilterSideNav = () => {
               type="checkbox"
               name="category-1"
               id="category-1"
+              checked={filterState.categories.includes("caps")}
               onChange={(e) =>
                 filterDispatch({
                   type: CATEGORIES,
@@ -149,6 +150,7 @@ export const FilterSideNav = () => {
               type="checkbox"
               name="category-2"
               id="category-2"
+              checked={filterState.categories.includes("glasses")}
               onChange={(e) =>
                 filterDispatch({
                   type: CATEGORIES,
@@ -166,6 +168,7 @@ export const FilterSideNav = () => {
               type="checkbox"
               name="category-3"
               id="category-3"
+              checked={filterState.categories.includes("shoes")}
               onChange={(e) =>
                 filterDispatch({
                   type: CATEGORIES,

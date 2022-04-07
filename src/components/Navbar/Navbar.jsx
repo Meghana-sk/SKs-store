@@ -26,7 +26,7 @@ export const Navbar = () => {
   return (
     <nav className="nav">
       <Link to="/">
-        <h1 className="brand-name">SK's</h1>
+        <h1 className="brand-name text-m">SK's</h1>
       </Link>
       <div className="search-box">
         <input type="search" name="search" placeholder="search ..." />

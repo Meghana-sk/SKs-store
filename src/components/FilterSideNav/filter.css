@@ -1,5 +1,6 @@
 .prod-filters {
   width: 500px;
+  min-width: 300px;
   height: 85vh;
   margin: 0.5rem;
   border-right: 1px solid var(--offline-gray);
@@ -84,36 +85,3 @@
   color: var(--secondary-color-hover);
 }
 
-@media (max-width: 800px) {
-  .prod-content .prod-filters {
-    width: 90vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 20;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    background: var(--white-color);
-    transition: left 0.8s ease;
-    display: none;
-    overflow-y: scroll;
-  }
-  .add-filter-btn {
-    display: block;
-    width: 100%;
-  }
-  .close-filter {
-    display: inline;
-    height: 24px;
-    position: absolute;
-    top: var(--pd-s);
-    right: var(--pd-s);
-    color: var(--secondary-dark-blue-hover);
-  }
-  .slider-container {
-    width: 60vw;
-  }
-}
