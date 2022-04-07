@@ -13,7 +13,7 @@ const Home = () => {
         if (catgeroiesData.status === 200)
           setProductCategories(catgeroiesData.data.categories);
       } catch (error) {
-        console.error(error);
+        alert(error);
       }
     })();
   }, []);

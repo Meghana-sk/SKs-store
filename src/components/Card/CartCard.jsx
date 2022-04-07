@@ -1,10 +1,33 @@
 import "./card.css";
-import { useCart } from "../../context/cart-context";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useCart } from "../../context/cart-context";
+import { useWishlist } from "../../context/wishlist-context";
+import { useAuth } from "../../context/auth-context";
+
 export const CartCard = (props) => {
   const { title, subtitle, price, imgSrc, rating, _id, qty } = props;
   const { updateProductQty, deleteItemFromCart } = useCart();
+  const { addItemToWishlist, wishlistState } = useWishlist();
+  const { wishlist } = wishlistState;
   const [addBtnDisabled, setDisabled] = useState(false);
+  const { authState } = useAuth();
+  const navigate = useNavigate();
+
+  const productInWishlist = (productId) => {
+    let productExists = wishlist.length
+      ? wishlist.findIndex((item) => item._id === productId)
+      : -1;
+    return productExists === -1;
+  };
+
+  const addToWishlistHandler = (product) => {
+    if (authState.token && productInWishlist(product._id)) {
+      addItemToWishlist(product);
+    } else if (!authState.token && productInWishlist(product._id)) {
+      navigate("/login");
+    }
+  };
   return (
     <>
       <div className="card card-horizontal">
@@ -39,7 +62,13 @@ export const CartCard = (props) => {
               +
             </button>
           </div>
-          <button className="btn btn-primary">
+          <button
+            className="btn btn-primary"
+            onClick={() => {
+              addToWishlistHandler(props);
+              deleteItemFromCart(props);
+            }}
+          >
             <i className="fas fa-cart-plus"></i>Move to wishlist
           </button>
           <button
