@@ -1,5 +1,6 @@
 import "./card.css";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { useWishlist } from "../../context/wishlist-context";
 import { useAuth } from "../../context/auth-context";
 import { useCart } from "../../context/cart-context";
@@ -11,13 +12,15 @@ export const WishlistCard = (product) => {
   const { cartState, addItemToCart } = useCart();
   const { cart } = cartState;
   const navigate = useNavigate();
+  const [moveToBtnDisabled, setMoveToBtnDisabled] = useState(false);
   const productInCart = (productId) => {
     let productExists = cart.findIndex((item) => item._id === productId);
     return productExists === -1;
   };
   const addToCartHandler = (props) => {
     if (authState.token && productInCart(props._id)) {
-      addItemToCart(props);
+      setMoveToBtnDisabled(true);
+      addItemToCart(props, setMoveToBtnDisabled);
     } else if (productInCart(props._id) && !authState.token) navigate("/login");
   };
   return (
@@ -44,6 +47,7 @@ export const WishlistCard = (product) => {
         <div className="card-footer">
           <button
             className="btn btn-primary"
+            disabled={moveToBtnDisabled}
             onClick={() => {
               addToCartHandler(product);
               deleteItemFromWishlist({ _id });
