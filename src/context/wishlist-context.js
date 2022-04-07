@@ -35,7 +35,7 @@ const WishlistProvider = ({ children }) => {
     if (authState.token !== null) getWishlistItems();
   }, [authState.token]);
 
-  const addItemToWishlist = async (item) => {
+  const addItemToWishlist = async (item, setDisabled) => {
     try {
       const response = await axios.post(
         "/api/user/wishlist",
@@ -48,8 +48,10 @@ const WishlistProvider = ({ children }) => {
         type: ADD_TO_WISHLIST,
         payload: response.data.wishlist,
       });
+      setDisabled(false);
     } catch (err) {
       alert(err);
+      setDisabled(false);
     }
   };
 

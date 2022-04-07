@@ -1,4 +1,5 @@
 import "./cart.css";
+import { Link } from "react-router-dom";
 import { CartCard, PriceDetailsCard } from "../../components";
 import { useCart } from "../../context/cart-context";
 import { useAuth } from "../../context/auth-context";
@@ -29,7 +30,14 @@ const Cart = () => {
           <PriceDetailsCard price={price} cart={cartState.cart} />
         </main>
       ) : (
-        <p className="prod-select-container">Your cart is empty :(</p>
+        <div className="prod-select-container column-flex">
+          <p>Your cart is empty! :(</p>
+          <Link to="/products">
+            <button className="btn btn-primary text-s">
+              Continue shopping
+            </button>
+          </Link>
+        </div>
       )}
     </>
   );

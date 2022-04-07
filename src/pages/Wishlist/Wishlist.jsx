@@ -1,4 +1,5 @@
 import "./wishlist.css";
+import { Link } from "react-router-dom";
 import { WishlistCard } from "../../components";
 import { useWishlist } from "../../context/wishlist-context";
 
@@ -20,7 +21,14 @@ const Wishlist = () => {
           </section>
         </main>
       ) : (
-        <p className="prod-select-container">Your wishlist is empty! :(</p>
+        <div className="prod-select-container column-flex">
+          <p>Your wishlist is empty! :(</p>
+          <Link to="/products">
+            <button className="btn btn-primary text-s">
+              Continue shopping
+            </button>
+          </Link>
+        </div>
       )}
     </>
   );

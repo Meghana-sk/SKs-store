@@ -1,3 +1,6 @@
+:root {
+  --hover-blue: #0066ff;
+}
 .card-content > .card-title,
 .card-content > .card-subtitle {
   align-self: flex-start;
@@ -27,4 +30,12 @@
 .price-detail-row {
   display: flex;
   justify-content: space-between;
+}
+
+.wishlist-icon {
+  color: rgb(41, 38, 38);
+}
+
+.wishlist-icon-clicked {
+  color: var(--hover-blue);
 }

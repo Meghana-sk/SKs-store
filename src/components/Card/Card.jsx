@@ -1,4 +1,5 @@
 import "./card.css";
+import { useState } from "react";
 import { useCart } from "../../context/cart-context";
 import { useAuth } from "../../context/auth-context";
 import { useNavigate } from "react-router-dom";
@@ -8,10 +9,12 @@ export const Card = (props) => {
   const { title, subtitle, price, imgSrc, rating } = props;
   const { addItemToCart, cartState } = useCart();
   const { cart } = cartState;
-  const { addItemToWishlist, wishlistState } = useWishlist();
+  const { addItemToWishlist, deleteItemFromWishlist, wishlistState } =
+    useWishlist();
   const { wishlist } = wishlistState;
   const { authState } = useAuth();
   const navigate = useNavigate();
+  const [wishlistBtnDisabled, setWishlistDisabled] = useState(false);
 
   const productInCart = (productId) => {
     let productExists = cart.findIndex((item) => item._id === productId);
@@ -35,13 +38,13 @@ export const Card = (props) => {
     return productExists === -1;
   };
 
-  const addToWishlistHandler = (product) => {
+  const addToWishlistHandler = (product, setDisabled) => {
     if (authState.token && productInWishlist(product._id)) {
-      addItemToWishlist(product);
+      addItemToWishlist(product, setDisabled);
     } else if (!authState.token && productInWishlist(product._id))
       navigate("/login");
     else if (!productInWishlist(product._id) && authState.token) {
-      navigate("/wishlist");
+      deleteItemFromWishlist(product, setDisabled);
     }
   };
 
@@ -50,10 +53,21 @@ export const Card = (props) => {
       <div className="card">
         <div className="card-content">
           <h6 className="card-badge">NEW</h6>
-          <div className="wishlist">
+          <div
+            className="wishlist"
+            disabled={wishlistBtnDisabled}
+            onClick={() => {
+              setWishlistDisabled(true);
+              addToWishlistHandler(props, setWishlistDisabled);
+            }}
+          >
             <i
-              className="far fa-heart"
-              onClick={() => addToWishlistHandler(props)}
+              className={`fa fa-heart ${
+                productInWishlist(props._id)
+                  ? "wishlist-icon"
+                  : "wishlist-icon-clicked"
+              }`}
+              disabled={wishlistBtnDisabled}
             ></i>
           </div>
           <img src={imgSrc} alt="cap" className="card-img" />

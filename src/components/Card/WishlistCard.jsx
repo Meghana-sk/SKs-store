@@ -25,13 +25,13 @@ export const WishlistCard = (product) => {
       <div className="card">
         <div className="card-content">
           <h6 className="card-badge">NEW</h6>
-          <div className="wishlist">
-            <i
-              className="fas fa-times"
-              onClick={() => {
-                deleteItemFromWishlist({ _id });
-              }}
-            ></i>
+          <div
+            className="wishlist"
+            onClick={() => {
+              deleteItemFromWishlist({ _id });
+            }}
+          >
+            <i className="fas fa-times"></i>
           </div>
           <img src={imgSrc} alt="product" className="card-img" />
           <h3 className="card-title">{title}</h3>
