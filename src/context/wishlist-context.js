@@ -20,7 +20,7 @@ const WishlistProvider = ({ children }) => {
   useEffect(() => {
     const getWishlistItems = async () => {
       try {
-        const response = await axios.get("/api/user/wishlistt", {
+        const response = await axios.get("/api/user/wishlist", {
           headers: {
             authorization: authState.token,
           },

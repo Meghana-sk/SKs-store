@@ -11,6 +11,7 @@ export const CartCard = (props) => {
   const { addItemToWishlist, wishlistState } = useWishlist();
   const { wishlist } = wishlistState;
   const [addBtnDisabled, setDisabled] = useState(false);
+  const [moveToWishlist, setMoveToWishlist] = useState(false);
   const { authState } = useAuth();
   const navigate = useNavigate();
 
@@ -23,7 +24,8 @@ export const CartCard = (props) => {
 
   const addToWishlistHandler = (product) => {
     if (authState.token && productInWishlist(product._id)) {
-      addItemToWishlist(product);
+      setMoveToWishlist(true);
+      addItemToWishlist(product, setMoveToWishlist);
     } else if (!authState.token && productInWishlist(product._id)) {
       navigate("/login");
     }
@@ -64,6 +66,7 @@ export const CartCard = (props) => {
           </div>
           <button
             className="btn btn-primary"
+            disabled={moveToWishlist}
             onClick={() => {
               addToWishlistHandler(props);
               deleteItemFromCart(props);

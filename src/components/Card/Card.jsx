@@ -15,6 +15,7 @@ export const Card = (props) => {
   const { authState } = useAuth();
   const navigate = useNavigate();
   const [wishlistBtnDisabled, setWishlistBtnDisabled] = useState(false);
+  const [addBtnDisabled, setAddBtnDisabled] = useState(false);
 
   const productInCart = (productId) => {
     let productExists = cart.findIndex((item) => item._id === productId);
@@ -23,7 +24,8 @@ export const Card = (props) => {
 
   const addToCartHandler = (props) => {
     if (authState.token && productInCart(props._id) === "Add to cart") {
-      addItemToCart(props);
+      setAddBtnDisabled(true);
+      addItemToCart(props, setAddBtnDisabled);
     } else if (productInCart(props._id) === "Add to cart" && !authState.token)
       navigate("/login");
     else if (productInCart(props._id) === "Go to cart" && authState.token) {
@@ -82,6 +84,7 @@ export const Card = (props) => {
         <div className="card-footer">
           <button
             className="btn btn-primary"
+            disabled={addBtnDisabled}
             onClick={() => {
               addToCartHandler(props);
             }}

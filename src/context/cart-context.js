@@ -31,7 +31,7 @@ const CartProvider = ({ children }) => {
     };
     if (authState.token !== null) getCartItems();
   }, [authState.token]);
-  const addItemToCart = async (item) => {
+  const addItemToCart = async (item, setAddBtnDisabled) => {
     try {
       const response = await axios.post(
         "/api/user/cart",
@@ -41,8 +41,10 @@ const CartProvider = ({ children }) => {
         }
       );
       cartDispatch({ type: ADD_TO_CART, payload: response.data.cart });
+      setAddBtnDisabled(false);
     } catch (err) {
       alert(err);
+      setAddBtnDisabled(false);
     }
   };
   const updateProductQty = async (_id, actionType, setBtnDisabled) => {
