@@ -14,7 +14,7 @@ export const Card = (props) => {
   const { wishlist } = wishlistState;
   const { authState } = useAuth();
   const navigate = useNavigate();
-  const [wishlistBtnDisabled, setWishlistDisabled] = useState(false);
+  const [wishlistBtnDisabled, setWishlistBtnDisabled] = useState(false);
 
   const productInCart = (productId) => {
     let productExists = cart.findIndex((item) => item._id === productId);
@@ -38,13 +38,16 @@ export const Card = (props) => {
     return productExists === -1;
   };
 
-  const addToWishlistHandler = (product, setDisabled) => {
-    if (authState.token && productInWishlist(product._id)) {
-      addItemToWishlist(product, setDisabled);
-    } else if (!authState.token && productInWishlist(product._id))
+  const addToWishlistHandler = (product) => {
+    if (authState.token) {
+      if (!productInWishlist(product._id)) {
+        deleteItemFromWishlist(product);
+      } else {
+        setWishlistBtnDisabled(true);
+        addItemToWishlist(product, setWishlistBtnDisabled);
+      }
+    } else {
       navigate("/login");
-    else if (!productInWishlist(product._id) && authState.token) {
-      deleteItemFromWishlist(product, setDisabled);
     }
   };
 
@@ -53,12 +56,11 @@ export const Card = (props) => {
       <div className="card">
         <div className="card-content">
           <h6 className="card-badge">NEW</h6>
-          <div
+          <button
             className="wishlist"
             disabled={wishlistBtnDisabled}
             onClick={() => {
-              setWishlistDisabled(true);
-              addToWishlistHandler(props, setWishlistDisabled);
+              addToWishlistHandler(props);
             }}
           >
             <i
@@ -67,9 +69,8 @@ export const Card = (props) => {
                   ? "wishlist-icon"
                   : "wishlist-icon-clicked"
               }`}
-              disabled={wishlistBtnDisabled}
             ></i>
-          </div>
+          </button>
           <img src={imgSrc} alt="cap" className="card-img" />
           <h3 className="card-title">{title}</h3>
           <p className="card-subtitle">{subtitle}</p>

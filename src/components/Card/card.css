@@ -37,5 +37,10 @@
 }
 
 .wishlist-icon-clicked {
-  color: var(--hover-blue);
+  /* color: var(--hover-blue); */
+  color: red;
+}
+
+.wishlist-icon-disabled {
+  pointer-events: none;
 }
