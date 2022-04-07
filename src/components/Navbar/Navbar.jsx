@@ -8,14 +8,14 @@ import { useWishlist } from "../../context/wishlist-context";
 export const Navbar = () => {
   const { authState, authDispatch } = useAuth();
   const { cartState, cartDispatch } = useCart();
-  const { wishlistState, wishlistDisptach } = useWishlist();
+  const { wishlistState, wishlistDispatch } = useWishlist();
   const navigate = useNavigate();
   const userName = authState.token ? authState.user.firstName : "";
 
   const logoutHandler = () => {
     navigate("/");
     cartDispatch({ type: CLEAR_CART });
-    wishlistDisptach({ type: CLEAR_WISHLIST });
+    wishlistDispatch({ type: CLEAR_WISHLIST });
     localStorage.removeItem("userAuthToken");
     localStorage.removeItem("user");
     authDispatch({ type: LOGOUT });
