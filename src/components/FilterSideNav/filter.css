@@ -1,6 +1,6 @@
 .prod-filters {
   width: 500px;
-  min-width: 300px;
+  min-width: 400px;
   height: 85vh;
   margin: 0.5rem;
   border-right: 1px solid var(--offline-gray);

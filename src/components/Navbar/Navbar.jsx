@@ -32,9 +32,6 @@ export const Navbar = () => {
         <input type="search" name="search" placeholder="search ..." />
         <i className="fas fa-search search-btn"></i>
       </div>
-      <div className="open-menu">
-        <i className="fas fa-bars"></i>
-      </div>
       <ul className="main-menu text-s fw-600">
         <li>
           <Link to="/products">Men</Link>
