@@ -35,7 +35,43 @@ import glasses8 from "./products/glasses/glasses8.jpg";
 import glasses9 from "./products/glasses/glasses9.jpg";
 import glasses10 from "./products/glasses/glasses10.jpg";
 
-export {cap1, cap2, cap3, cap4, cap5, cap6, cap7, cap8, cap9, cap10, cap11, cap12, cap13, cap14};
-export {shoe1, shoe2, shoe3, shoe4, shoe5, shoe6, shoe7, shoe8, shoe9, shoe10};
-export {glasses1, glasses2, glasses3, glasses4, glasses5, glasses6, glasses7, glasses8, glasses9,glasses10};
-
+export {
+  cap1,
+  cap2,
+  cap3,
+  cap4,
+  cap5,
+  cap6,
+  cap7,
+  cap8,
+  cap9,
+  cap10,
+  cap11,
+  cap12,
+  cap13,
+  cap14,
+};
+export {
+  shoe1,
+  shoe2,
+  shoe3,
+  shoe4,
+  shoe5,
+  shoe6,
+  shoe7,
+  shoe8,
+  shoe9,
+  shoe10,
+};
+export {
+  glasses1,
+  glasses2,
+  glasses3,
+  glasses4,
+  glasses5,
+  glasses6,
+  glasses7,
+  glasses8,
+  glasses9,
+  glasses10,
+};

@@ -2,9 +2,24 @@ import "./home.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useProductFilter } from "../../context/productFilter-context";
+import { CATEGORIES, CLEAR_FILTERS } from "../../shared/types";
 
 const Home = () => {
   const [productCategories, setProductCategories] = useState([]);
+  const { filterDispatch } = useProductFilter();
+
+  const handleCategoryClick = (categoryName) => {
+    console.log(categoryName.toLowerCase());
+    filterDispatch({ type: CLEAR_FILTERS });
+    filterDispatch({
+      type: CATEGORIES,
+      payload: {
+        categoryName: categoryName.toLowerCase(),
+        isSelected: true,
+      },
+    });
+  };
 
   useEffect(() => {
     (async () => {
@@ -36,9 +51,19 @@ const Home = () => {
         <section className="featured">
           <h2>Featured categories</h2>
           <div className="featured-container fw-900">
-            {productCategories.map(({ categoryName }) => (
-              <Link to="/products">
-                <div className="category cat-one">{categoryName}</div>
+            {productCategories.map(({ categoryName, imgSrc }) => (
+              <Link
+                to="/products"
+                onClick={() => handleCategoryClick(categoryName)}
+              >
+                <div className="category cat-one">
+                  <img
+                    src={imgSrc}
+                    alt={categoryName}
+                    className="category-img"
+                  />
+                  <span className="category-name">{categoryName}</span>
+                </div>
               </Link>
             ))}
           </div>

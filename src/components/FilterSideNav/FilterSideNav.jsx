@@ -36,6 +36,7 @@ export const FilterSideNav = () => {
             max="10000"
             defaultValue={priceRange}
             className="slider"
+            checked={filterState.priceRange}
             onChange={(event) =>
               filterDispatch({
                 type: PRICE_RANGE_FILTER,
@@ -132,6 +133,7 @@ export const FilterSideNav = () => {
               type="checkbox"
               name="category-1"
               id="category-1"
+              checked={filterState.categories.includes("caps")}
               onChange={(e) =>
                 filterDispatch({
                   type: CATEGORIES,
@@ -149,6 +151,7 @@ export const FilterSideNav = () => {
               type="checkbox"
               name="category-2"
               id="category-2"
+              checked={filterState.categories.includes("glasses")}
               onChange={(e) =>
                 filterDispatch({
                   type: CATEGORIES,
@@ -166,6 +169,7 @@ export const FilterSideNav = () => {
               type="checkbox"
               name="category-3"
               id="category-3"
+              checked={filterState.categories.includes("shoes")}
               onChange={(e) =>
                 filterDispatch({
                   type: CATEGORIES,
@@ -187,6 +191,7 @@ export const FilterSideNav = () => {
               type="checkbox"
               name="brand-1"
               id="brand-1"
+              checked={filterState.brands.includes("Adidas")}
               onChange={(e) =>
                 filterDispatch({
                   type: BRANDS,
@@ -201,6 +206,7 @@ export const FilterSideNav = () => {
               type="checkbox"
               name="brand-2"
               id="brand-2"
+              checked={filterState.brands.includes("H&M")}
               onChange={(e) =>
                 filterDispatch({
                   type: BRANDS,
@@ -215,6 +221,7 @@ export const FilterSideNav = () => {
               type="checkbox"
               name="brand-3"
               id="brand-3"
+              checked={filterState.brands.includes("Ray Ban")}
               onChange={(e) =>
                 filterDispatch({
                   type: BRANDS,
@@ -229,6 +236,7 @@ export const FilterSideNav = () => {
               type="checkbox"
               name="brand-3"
               id="brand-4"
+              checked={filterState.brands.includes("Nike")}
               onChange={(e) =>
                 filterDispatch({
                   type: BRANDS,
@@ -247,6 +255,7 @@ export const FilterSideNav = () => {
               type="checkbox"
               name="men"
               id="men"
+              checked={filterState.genderSelect.includes("men")}
               onChange={(e) =>
                 filterDispatch({
                   type: GENDER_SELECT,
@@ -261,6 +270,7 @@ export const FilterSideNav = () => {
               type="checkbox"
               name="women"
               id="women"
+              checked={filterState.genderSelect.includes("women")}
               onChange={(e) =>
                 filterDispatch({
                   type: GENDER_SELECT,
