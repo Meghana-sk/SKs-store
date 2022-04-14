@@ -7,3 +7,4 @@ export {
   getProductsWithSelectedGender,
 } from "./filterByCategory";
 export { cartPriceCalculator } from "./cartPriceDetailsCalculator";
+export { getProductsWithSearchQuery } from "./searchProduct";

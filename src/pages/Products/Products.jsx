@@ -9,6 +9,7 @@ import {
   getProductsWithSelectedBrand,
   getProductsWithSelectedCategory,
   getProductsWithSelectedGender,
+  getProductsWithSearchQuery,
 } from "../../utils";
 
 const Products = () => {
@@ -32,6 +33,10 @@ const Products = () => {
   filteredProducts = getProductsWithSelectedGender(
     filteredProducts,
     filterState.genderSelect
+  );
+  filteredProducts = getProductsWithSearchQuery(
+    filteredProducts,
+    filterState.search
   );
 
   return (

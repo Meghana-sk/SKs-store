@@ -10,7 +10,6 @@ const Home = () => {
   const { filterDispatch } = useProductFilter();
 
   const handleCategoryClick = (categoryName) => {
-    console.log(categoryName.toLowerCase());
     filterDispatch({ type: CLEAR_FILTERS });
     filterDispatch({
       type: CATEGORIES,
