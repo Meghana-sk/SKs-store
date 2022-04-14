@@ -1,15 +1,23 @@
 import "./navbar.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/auth-context";
-import { LOGOUT, CLEAR_CART, CLEAR_WISHLIST } from "../../shared/types";
+import {
+  LOGOUT,
+  CLEAR_CART,
+  CLEAR_WISHLIST,
+  SEARCH_FILTER,
+} from "../../shared/types";
 import { useCart } from "../../context/cart-context";
 import { useWishlist } from "../../context/wishlist-context";
+import { useProductFilter } from "../../context/productFilter-context";
 
 export const Navbar = () => {
   const { authState, authDispatch } = useAuth();
   const { cartState, cartDispatch } = useCart();
   const { wishlistState, wishlistDispatch } = useWishlist();
+  const { filterDispatch } = useProductFilter();
   const navigate = useNavigate();
+  const location = useLocation();
   const userName = authState.token ? authState.user.firstName : "";
 
   const logoutHandler = () => {
@@ -32,10 +40,22 @@ export const Navbar = () => {
       <Link to="/">
         <h1 className="brand-name text-m">SK's</h1>
       </Link>
-      <div className="search-box">
-        <input type="search" name="search" placeholder="search ..." />
-        <i className="fas fa-search search-btn"></i>
-      </div>
+      {location.pathname === "/products" ? (
+        <div className="search-box">
+          <input
+            type="search"
+            name="search"
+            placeholder="search ..."
+            onChange={(event) =>
+              filterDispatch({
+                type: SEARCH_FILTER,
+                payload: { search: event.target.value },
+              })
+            }
+          />
+          <i className="fas fa-search search-btn"></i>
+        </div>
+      ) : null}
       <ul className="main-menu text-s fw-600">
         {authState.token && (
           <li>

@@ -6,6 +6,7 @@ export const CATEGORIES = "CATEGORIES";
 export const GENDER_SELECT = "GENDER";
 export const BRANDS = "BRANDS";
 export const RATING = "RATING";
+export const SEARCH_FILTER = "SEARCH_FILTER";
 
 export const SIGNUP = "SIGNUP";
 export const LOGIN = "LOGIN";

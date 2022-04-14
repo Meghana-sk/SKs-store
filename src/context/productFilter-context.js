@@ -11,6 +11,7 @@ const ProductFilterProvider = ({ children }) => {
     priceRange: 0,
     brands: [],
     genderSelect: [],
+    search: "",
   };
   const [filterState, filterDispatch] = useReducer(
     prodFilterReducer,

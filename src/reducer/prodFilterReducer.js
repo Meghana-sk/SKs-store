@@ -6,6 +6,7 @@ import {
   BRANDS,
   GENDER_SELECT,
   PRICE_RANGE_FILTER,
+  SEARCH_FILTER,
   CLEAR_FILTERS,
 } from "../shared/types";
 
@@ -66,6 +67,10 @@ export function prodFilterReducer(state, action) {
 
     case PRICE_RANGE_FILTER: {
       return { ...state, priceRange: payload.priceRange };
+    }
+
+    case SEARCH_FILTER: {
+      return { ...state, search: payload.search };
     }
 
     case CLEAR_FILTERS: {
