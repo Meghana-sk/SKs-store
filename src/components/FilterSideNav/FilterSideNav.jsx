@@ -1,4 +1,5 @@
 import "./filter.css";
+import { useState } from "react";
 import { useProductFilter } from "../../context/productFilter-context";
 import {
   HIGH_TO_LOW,
@@ -14,9 +15,14 @@ import {
 export const FilterSideNav = () => {
   const { filterState, filterDispatch } = useProductFilter();
   const { sortBy, rating, priceRange } = filterState;
+  const [showFilter, setShowFilter] = useState(false);
   return (
     <>
-      <aside className="prod-filters">
+      <aside
+        className={`prod-filters ${
+          showFilter ? "prod-mobile-show-filters" : ""
+        }`}
+      >
         <div className="filter-header">
           <h4 className="section-heading">FILTERS</h4>
           <button
@@ -282,6 +288,15 @@ export const FilterSideNav = () => {
           </li>
         </ul>
       </aside>
+      <button
+        className="btn btn-secondary text-s add-filter-btn"
+        onClick={() => {
+          setShowFilter(!showFilter);
+          console.log("clicked");
+        }}
+      >
+        {showFilter ? "Close" : "Add"} filter
+      </button>
     </>
   );
 };
