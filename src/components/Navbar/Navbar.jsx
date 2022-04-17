@@ -76,26 +76,6 @@ export const Navbar = () => {
             </div>
           </Link>
         </li>
-        <div className="close-menu">
-          <i className="fa fa-times"></i>
-        </div>
-        <span className="socials">
-          <li>
-            <a href="https://www.instagram.com/meghanaask/">
-              <i className="fab fa-instagram"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://twitter.com/meghana__sk">
-              <i className="fab fa-twitter"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/Meghana-sk">
-              <i className="fab fa-github"></i>
-            </a>
-          </li>
-        </span>
       </ul>
     </nav>
   );

@@ -66,38 +66,40 @@ const Login = () => {
             onSubmit={loginHandler}
           >
             <div className="input-box">
-              <label className="input-label fw-600">
+              <label className="input-label fw-600" for="email">
                 Email
-                <input
-                  className="input-text"
-                  type="email"
-                  required
-                  value={setUserInfo.email}
-                  onChange={(event) =>
-                    setUserInfo({ ...userInfo, email: event.target.value })
-                  }
-                />
               </label>
+              <input
+                className="input-text"
+                type="email"
+                name="email"
+                id="email"
+                required
+                value={setUserInfo.email}
+                onChange={(event) =>
+                  setUserInfo({ ...userInfo, email: event.target.value })
+                }
+              />
             </div>
             <div className="input-box">
-              <label className="input-label fw-600">
-                Password
-                <input
-                  className="input-text"
-                  type={showPassword ? "text" : "password"}
-                  required
-                  value={setUserInfo.password}
-                  onChange={(event) =>
-                    setUserInfo({ ...userInfo, password: event.target.value })
-                  }
-                />
-                <i
-                  className={`fa ${
-                    showPassword ? "fa-eye" : "fa-eye-slash"
-                  } eye-icon`}
-                  onClick={() => setShowPassword((show) => !show)}
-                ></i>
-              </label>
+              <label className="input-label fw-600">Password</label>
+              <input
+                className="input-text"
+                type={showPassword ? "text" : "password"}
+                id="password"
+                name="password"
+                required
+                value={setUserInfo.password}
+                onChange={(event) =>
+                  setUserInfo({ ...userInfo, password: event.target.value })
+                }
+              />
+              <i
+                className={`fa ${
+                  showPassword ? "fa-eye" : "fa-eye-slash"
+                } eye-icon`}
+                onClick={() => setShowPassword((show) => !show)}
+              ></i>
             </div>
             <button className="btn btn-primary text-s">Login</button>
           </form>

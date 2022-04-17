@@ -38,7 +38,7 @@ const Products = () => {
     <>
       <main className="prod-content">
         <FilterSideNav />
-        <section className="prod-section">
+        <section className="products-section">
           <h3>
             Showing Products{" "}
             {`${filteredProducts.length} / ${availableProducts.length}`}
