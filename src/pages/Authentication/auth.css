@@ -1,10 +1,6 @@
 .auth-container {
-  min-width: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100vh;
+  max-width: 20rem;
+  margin: 5rem auto 5rem auto;
 }
 
 .auth-header {
@@ -34,6 +30,20 @@ form .input-box {
   width: 100%;
 }
 
+.input-box {
+  position: relative;
+}
+
+.input-box i {
+  position: absolute;
+  right: 1rem;
+  bottom: 0.9rem;
+}
+
+.input-label {
+  text-align: left;
+}
+
 .auth-header i {
   cursor: pointer;
   color: var(--secondary-dark-blue-hover);
@@ -45,10 +55,4 @@ i:hover {
 
 .login-hint {
   color: var(--secondary-color-hover);
-}
-
-.eye-icon {
-  background-color: var(--white-color);
-  padding: 10px;
-  border-radius: 5px;
 }
