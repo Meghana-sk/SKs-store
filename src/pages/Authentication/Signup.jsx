@@ -73,101 +73,111 @@ const Signup = () => {
           </header>
           <form onSubmit={signupHandler}>
             <div className="input-box">
-              <label className="input-label fw-600">
+              <label className="input-label fw-600" for="first-name">
                 First name
-                <input
-                  className="input-text"
-                  type="text"
-                  required
-                  value={userCredentials.firstName}
-                  onChange={(event) =>
-                    setUserCredentials({
-                      ...userCredentials,
-                      firstName: event.target.value,
-                    })
-                  }
-                />
               </label>
+              <input
+                className="input-text"
+                type="text"
+                id="first-name"
+                name="first-name"
+                required
+                value={userCredentials.firstName}
+                onChange={(event) =>
+                  setUserCredentials({
+                    ...userCredentials,
+                    firstName: event.target.value,
+                  })
+                }
+              />
             </div>
             <div className="input-box">
-              <label className="input-label fw-600">
+              <label className="input-label fw-600" for="last-name">
                 Last name
-                <input
-                  className="input-text"
-                  type="text"
-                  required
-                  value={userCredentials.lastName}
-                  onChange={(event) =>
-                    setUserCredentials({
-                      ...userCredentials,
-                      lastName: event.target.value,
-                    })
-                  }
-                />
               </label>
+              <input
+                className="input-text"
+                type="text"
+                name="last-name"
+                id="last-name"
+                required
+                value={userCredentials.lastName}
+                onChange={(event) =>
+                  setUserCredentials({
+                    ...userCredentials,
+                    lastName: event.target.value,
+                  })
+                }
+              />
             </div>
             <div className="input-box">
-              <label className="input-label fw-600">
+              <label className="input-label fw-600" for="email">
                 Email
-                <input
-                  className="input-text"
-                  type="email"
-                  required
-                  value={userCredentials.email}
-                  onChange={(event) =>
-                    setUserCredentials({
-                      ...userCredentials,
-                      email: event.target.value,
-                    })
-                  }
-                />
               </label>
+              <input
+                className="input-text"
+                type="email"
+                name="email"
+                id="email"
+                required
+                value={userCredentials.email}
+                onChange={(event) =>
+                  setUserCredentials({
+                    ...userCredentials,
+                    email: event.target.value,
+                  })
+                }
+              />
             </div>
             <div className="input-box">
-              <label className="input-label fw-600">
+              <label className="input-label fw-600" for="password">
                 Password
-                <input
-                  className="input-text"
-                  type={showPassword ? "text" : "password"}
-                  required
-                  value={userCredentials.password}
-                  onChange={(event) => {
-                    setUserCredentials({
-                      ...userCredentials,
-                      password: event.target.value,
-                    });
-                  }}
-                />
-                <i
-                  className={`fa ${
-                    showPassword ? "fa-eye" : "fa-eye-slash"
-                  } eye-icon`}
-                  onClick={() => setShowPassword((show) => !show)}
-                ></i>
               </label>
+              <input
+                className="input-text"
+                name="password"
+                id="password"
+                type={showPassword ? "text" : "password"}
+                required
+                value={userCredentials.password}
+                onChange={(event) => {
+                  setUserCredentials({
+                    ...userCredentials,
+                    password: event.target.value,
+                  });
+                }}
+              />
+              <i
+                className={`fa ${
+                  showPassword ? "fa-eye" : "fa-eye-slash"
+                } eye-icon`}
+                onClick={() => setShowPassword((show) => !show)}
+              ></i>
             </div>
             <div className="input-box">
-              <label className="input-label fw-600">
+              <label className="input-label fw-600" for="confirm-password">
                 Confirm Password
-                <input
-                  className="input-text"
-                  type={showConfirmPassword ? "text" : "password"}
-                  required
-                  value={userCredentials.confirmPassword}
-                  onChange={(event) => {
-                    setUserCredentials({
-                      ...userCredentials,
-                      confirmPassword: event.target.value,
-                    });
-                  }}
-                />
-                <i
-                  className={`fa ${
-                    showConfirmPassword ? "fa-eye" : "fa-eye-slash"
-                  } eye-icon`}
-                  onClick={() => setShowConfirmPassword((show) => !show)}
-                ></i>
               </label>
+              <input
+                className="input-text"
+                name="confirm-password"
+                id="confirm-password"
+                type={showConfirmPassword ? "text" : "password"}
+                required
+                value={userCredentials.confirmPassword}
+                onChange={(event) => {
+                  setUserCredentials({
+                    ...userCredentials,
+                    confirmPassword: event.target.value,
+                  });
+                }}
+              />
+              <i
+                className={`fa ${
+                  showConfirmPassword ? "fa-eye" : "fa-eye-slash"
+                } eye-icon`}
+                onClick={() => setShowConfirmPassword((show) => !show)}
+              ></i>
             </div>
             <button className="btn btn-primary text-s">Create account</button>
           </form>
