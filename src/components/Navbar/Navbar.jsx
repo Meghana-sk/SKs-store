@@ -32,10 +32,6 @@ export const Navbar = () => {
       <Link to="/">
         <h1 className="brand-name text-m">SK's</h1>
       </Link>
-      <div className="search-box">
-        <input type="search" name="search" placeholder="search ..." />
-        <i className="fas fa-search search-btn"></i>
-      </div>
       <ul className="main-menu text-s fw-600">
         {authState.token && (
           <li>
